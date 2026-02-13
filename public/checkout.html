@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <!-- SECTION: Shipping Address -->
+      <section>
+        <form>
+          <fieldset>
+            <label
+              >Shipping Address
+
+              <p>
+                <label for="fullName">Full Name</label><br />
+                <input id="fullName" name="fullName" type="text" required />
+              </p>
+
+              <p>
+                <label for="street">Street</label><br />
+                <input id="street" name="streetName" type="text" required />
+              </p>
+
+              <p>
+                <label for="street">Street</label><br />
+                <input id="street" name="streetName" type="text" required />
+              </p>
+            </label>
+          </fieldset>
+        </form>
+      </section>
+
+      <!-- SECTION: Payment -->
+      <section>
+        <h2>Payment</h2>
+
+        <form id="paymentForm">
+          <p>
+            <label>
+              <input type="radio" name="paymentMethod" value="card" checked />
+              Credit Card
+            </label>
+
+            <label>
+              <input type="radio" name="paymentMethod" value="paypal" />
+              PayPal
+            </label>
+
+            <label>
+              <input type="radio" name="paymentMethod" value="gcash" />
+              Gcash
+            </label>
+          </p>
+
+          <fieldset>
+            <div id="cardFields">
+              <p>
+                <label for="cardNumber">Card Number</label><br />
+                <input
+                  id="cardNumber"
+                  type="text"
+                  placeholder="1234 5678 9012 3456"
+                />
+              </p>
+
+              <p>
+                <label for="expiry">Expiry</label><br />
+                <input id="expiry" type="text" placeholder="MM/YY" />
+              </p>
+
+              <p>
+                <label for="cvv">CVV</label><br />
+                <input id="cvv" type="text" placeholder="123" />
+              </p>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <div id="paypalNote">
+              <p>You will be redirected to PayPal after placing the order.</p>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <div id="gcashNote">
+              <p>You will be redirected to Gcash after placing the order.</p>
+            </div>
+          </fieldset>
+        </form>
+      </section>
+    </main>
+
+    <!-- ASIDE SUMMARY (sticky) -->
+    <aside >
+      <h2>Order Summary</h2>
+
+      <div >
+        <ul>
+          <li>
+            <div>
+              <p>Gaming Mouse</p>
+              <p>Price: $8.00</p>
+              <p>Qty: 1</p>
+            </div>
+
+            <div>
+              <p><strong>Subtotal: $16.00</strong></p>
+            </div>
+
+            <hr />
+
+          </li>
+
+          <li>
+            <div>
+              <p>Victus Laptop</p>
+              <p>Price: $15,000.00</p>
+              <p>Qty: 1</p>
+            </div>
+
+            <div>
+              <p><strong>Subtotal: $15,000.00</strong></p>
+            </div>
+
+            <hr />
+
+          </li>
+
+          <li>
+            <div>
+              <p>Mechanical Keyboard</p>
+              <p>Price: $10.00</p>
+              <p>Qty: 1</p>
+            </div>
+
+            <div>
+              <p><strong>Subtotal: $10.00</strong></p>
+            </div>
+
+            <hr />
+
+          </li>
+        </ul>
+
+        <br />
+        <hr />
+        <hr />
+
+      </div>
+
+      <p>SubTotal: $15,026</p>
+      <p>Shipping fee: $8.00</p>
+      <p>Discount : - $15.00</p>
+      <p><strong>Total: $15,034.00</strong></p>
+
+      <button type="button">Place Order</button>
+
+      <hr />
+    </aside>
+  </body>
+</html>

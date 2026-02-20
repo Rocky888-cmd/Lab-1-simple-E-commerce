@@ -4,93 +4,118 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="styles/cart.css"/>
+    <link rel="stylesheet" href="styles/style.css" />
   </head>
   <body>
-    <main>
-      <ul>
-        <li>
-            <div>
-                <img  src="assets/images/Gaming Mouse.jpg" alt="gaming mouse"/>
-                <h3>Gaming Mouse</h3>
-                <h3>Price: $8.00</h3>
-            </div>
-            
-            <div>
-                <span>
-                    <input type="number" placeholder="2" min="1" value="1" />
-                    <p>QTY</p>  
-                </span>
-                
-            </div>
-            <hr>
-            <div>
-                <h3>Subtotal: $16.00</h3>
-            </div>
-        </li>
+    <header>
+      <nav class="nav">
+        <h2>Cart</h2>
 
-        <li>
-            <div>
-                <img  src="assets/images/victus.png" alt="gaming laptop"/>
-                <h3>Victus Laptop</h3>
-                <h3>Price: $15,000.00</h3>
-            </div>
-            
-             <div>
-                <span>
-                    <input type="number" placeholder="1" min="2" value="1"/>
-                    <p>QTY</p>  
-                </span>
-                
-            </div>
-            <hr>
-            <div>
-                <h3>Subtotal: $15,000.00</h3>
-            </div>
-        </li>
+        <ul>
+          <li class="list"><a href="landing.html">Home</a></li>
+          <li class="list"><a href="products.html">Product</a></li>
+          <li class="list"><a href="cart.html">Cart</a></li>
+          <li class="list"><a href="account.html">Account</a></li>
+        </ul>
+      </nav>
+    </header>
 
-        <li>
-            <div>
-                <img  src="assets/images/Mechanical Keyboard.jpg" alt="Mechanical Keyboard"/>
-                <h3>Mechanical Keyboard</h3>
-                <h3>Price: $10.00</h3>
+    <main class="page" >
+      <div class="cart-container" >
+        <ul>
+          <li>
+            <div class="cart-item">
+              <img
+                class="image-content"
+                src="assets/images/Gaming Mouse.jpg"
+                alt="gaming mouse"
+              />
+              <h3>Gaming Mouse</h3>
+              <h3>Price: $8.00</h3>
             </div>
-            
-             <div>
-                <span>
-                    <input type="number" placeholder="1" min="1" value="1"/>
-                    <p>QTY</p>  
-                </span>
-                
-            </div>
-            <hr>
-            <div>
-                <h3>Subtotal: $10.00</h3>
-            </div>
-        </li>
-      </ul>
 
-      <br>
-      <hr>
-      <hr>
+            <div class="cart-item">
+              <span>
+                <input type="number" placeholder="2" min="1" value="1" />
+                <p>QTY</p>
+              </span>
+            </div>
+            <hr />
+            <div>
+              <h3>Subtotal: $16.00</h3>
+            </div>
+          </li>
 
-      <section>
-        <div>
-            <h3>Total: $15,026</h3>
-            <a href="checkout.html">Proceed to Checkout</a>
+          <li>
+            <div class="cart-item">
+              <img
+                class="image-content"
+                src="assets/images/victus.png"
+                alt="gaming laptop"
+              />
+              <h3>Victus Laptop</h3>
+              <h3>Price: $15,000.00</h3>
+            </div>
+
+            <div class="cart-item">
+              <span>
+                <input type="number" placeholder="1" min="2" value="1" />
+                <p>QTY</p>
+              </span>
+            </div>
+            <hr />
+            <div>
+              <h3>Subtotal: $15,000.00</h3>
+            </div>
+          </li>
+
+          <li>
+            <div class="cart-item">
+              <img
+                class="image-content"
+                src="assets/images/Mechanical Keyboard.jpg"
+                alt="Mechanical Keyboard"
+              />
+              <h3>Mechanical Keyboard</h3>
+              <h3>Price: $10.00</h3>
+            </div>
+
+            <div class="cart-item">
+              <span>
+                <input type="number" placeholder="1" min="1" value="1" />
+                <p>QTY</p>
+              </span>
+            </div>
+            <hr />
+            <div>
+              <h3>Subtotal: $10.00</h3>
+            </div>
+          </li>
+        </ul>
+
+      </div>
+
+      <section class="cart-total-container" >
+        <div class="cart-total">
+          <div class="cart-total-data">
+            <h3>Total:</h3>
+            <h3>$15,026</h3>
+          </div>
+
+          <hr>
+
+          <a class="checkoutBtn" href="checkout.html">Proceed to Checkout</a>
         </div>
       </section>
 
-      <section >
-        <div>
-            <p>Your cart is currently empty, click here to view the <a href="product.html">Product</a></p>
+      <section class="cart-empty-container">
+        <div class="cart-empty">
+          <p>
+            Your cart is currently empty, click here to view the
+            <a class="empty-layout" href="product.html">Product</a>
+          </p>
         </div>
       </section>
-
-      
-      <hr>
-      <hr>
-      <br>
 
     </main>
   </body>

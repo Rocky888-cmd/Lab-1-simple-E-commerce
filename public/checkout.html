@@ -1,164 +1,144 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <main>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout</title>
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+
+<body class="checkout">
+  <header>
+    <nav>
+      <ul>
+        <li><a href="landing.html">Home</a></li>
+        <li><a href="products.html">Product</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="account.html">Account</a></li>
+        <li><a href="signup.html">SignUp</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- PAGE LAYOUT -->
+  <div class="checkout-layout">
+    <main class="checkout-main">
+
       <!-- SECTION: Shipping Address -->
-      <section>
+      <section class="checkout-card">
+        <h2>Shipping</h2>
+
         <form>
           <fieldset>
-            <label
-              >Shipping Address
+            <legend>Shipping Address</legend>
 
-              <p>
-                <label for="fullName">Full Name</label><br />
-                <input id="fullName" name="fullName" type="text" required />
-              </p>
+            <p>
+              <label for="fullName">Full Name</label><br />
+              <input id="fullName" name="fullName" type="text" placeholder="Jona Eulin" required />
+            </p>
 
-              <p>
-                <label for="street">Street</label><br />
-                <input id="street" name="streetName" type="text" required />
-              </p>
+            <p>
+              <label for="street">Street</label><br />
+              <input id="street" name="street" type="text" placeholder="Brgy. ___, Catarman" required />
+            </p>
 
-              <p>
-                <label for="street">Street</label><br />
-                <input id="street" name="streetName" type="text" required />
-              </p>
-            </label>
+            <p>
+              <label for="zip">Zip Code</label><br />
+              <input id="zip" name="zip" type="text" placeholder="6400" required />
+            </p>
           </fieldset>
         </form>
       </section>
 
       <!-- SECTION: Payment -->
-      <section>
+      <section class="checkout-card">
         <h2>Payment</h2>
 
         <form id="paymentForm">
-          <pedit Card
-            </label>
->
-            <label>
+          <fieldset>
+            <legend>Payment Method</legend>
+
+            <label class="radio">
               <input type="radio" name="paymentMethod" value="card" checked />
-              Cr
-            <label>
+              Credit Card
+            </label>
+
+            <label class="radio">
               <input type="radio" name="paymentMethod" value="paypal" />
               PayPal
             </label>
-
-            <label>
-              <input type="radio" name="paymentMethod" value="gcash" />
-              Gcash
-            </label>
-          </p>
-
-          <fieldset>
-            <div id="cardFields">
-              <p>
-                <label for="cardNumber">Card Number</label><br />
-                <input
-                  id="cardNumber"
-                  type="text"
-                  placeholder="1234 5678 9012 3456"
-                />
-              </p>
-
-              <p>
-                <label for="expiry">Expiry</label><br />
-                <input id="expiry" type="text" placeholder="MM/YY" />
-              </p>
-
-              <p>
-                <label for="cvv">CVV</label><br />
-                <input id="cvv" type="text" placeholder="123" />
-              </p>
-            </div>
           </fieldset>
 
           <fieldset>
-            <div id="paypalNote">
-              <p>You will be redirected to PayPal after placing the order.</p>
-            </div>
-          </fieldset>
+            <legend>Card Details</legend>
 
-          <fieldset>
-            <div id="gcashNote">
-              <p>You will be redirected to Gcash after placing the order.</p>
-            </div>
+            <p>
+              <label for="cardNumber">Card Number</label><br />
+              <input id="cardNumber" type="text" placeholder="1234 5678 9012 3456" />
+            </p>
+
+            <p>
+              <label for="expiry">Expiry</label><br />
+              <input id="expiry" type="text" placeholder="MM/YY" />
+            </p>
+
+            <p>
+              <label for="cvv">CVV</label><br />
+              <input id="cvv" type="text" placeholder="123" />
+            </p>
+
+            <p class="note">
+              If you choose PayPal, you’ll be redirected after placing the order.
+            </p>
           </fieldset>
         </form>
       </section>
+
     </main>
 
     <!-- ASIDE SUMMARY (sticky) -->
-    <aside >
+    <aside class="summary">
       <h2>Order Summary</h2>
 
-      <div >
-        <ul>
-          <li>
-            <div>
-              <p>Gaming Mouse</p>
-              <p>Price: $8.00</p>
-              <p>Qty: 1</p>
-            </div>
+      <ul class="summary-list">
+        <li class="summary-item">
+          <div>
+            <p><strong>Gaming Mouse</strong></p>
+            <p>Price: $8.00</p>
+            <p>Qty: 1</p>
+          </div>
+          <p><strong>$8.00</strong></p>
+        </li>
 
-            <div>
-              <p><strong>Subtotal: $16.00</strong></p>
-            </div>
+        <li class="summary-item">
+          <div>
+            <p><strong>Victus Laptop</strong></p>
+            <p>Price: $15,000.00</p>
+            <p>Qty: 1</p>
+          </div>
+          <p><strong>$15,000.00</strong></p>
+        </li>
 
-            <hr />
-
-          </li>
-
-          <li>
-            <div>
-              <p>Victus Laptop</p>
-              <p>Price: $15,000.00</p>
-              <p>Qty: 1</p>
-            </div>
-
-            <div>
-              <p><strong>Subtotal: $15,000.00</strong></p>
-            </div>
-
-            <hr />
-
-          </li>
-
-          <li>
-            <div>
-              <p>Mechanical Keyboard</p>
-              <p>Price: $10.00</p>
-              <p>Qty: 1</p>
-            </div>
-
-            <div>
-              <p><strong>Subtotal: $10.00</strong></p>
-            </div>
-
-            <hr />
-
-          </li>
-        </ul>
-
-        <br />
-        <hr />
-        <hr />
-
-      </div>
-
-      <p>SubTotal: $15,026</p>
-      <p>Shipping fee: $8.00</p>
-      <p>Discount : - $15.00</p>
-      <p><strong>Total: $15,034.00</strong></p>
-
-      <button type="button">Place Order</button>
+        <li class="summary-item">
+          <div>
+            <p><strong>Mechanical Keyboard</strong></p>
+            <p>Price: $10.00</p>
+            <p>Qty: 1</p>
+          </div>
+          <p><strong>$10.00</strong></p>
+        </li>
+      </ul>
 
       <hr />
+
+      <p class="row"><span>SubTotal</span><span>$15,026.00</span></p>
+      <p class="row"><span>Shipping fee</span><span>$8.00</span></p>
+      <p class="row"><span>Discount</span><span>- $15.00</span></p>
+
+      <p class="row total"><span>Total</span><span>$15,034.00</span></p>
+
+      <button class="place-order" type="button">Place Order</button>
     </aside>
-  </body>
+  </div>
+</body>
 </html>

@@ -166,6 +166,8 @@ button {
 
 } */
 
+/* detail.html */
+
 .detail {
     background-color: var(--text-main);
     /* text-align: center; */
@@ -190,6 +192,21 @@ button {
     padding: 10px 10px 10px;
 
 }
+
+
+
+.detail1 table tr th:first-child {
+    font-weight: 900;
+    color: var(--primary-color);
+    background: rgba(0, 123, 255, 0.08);
+    width: 35%;
+}
+
+.detail1 table tr:last-child th,
+.detail1 table tr:last-child td {
+    border-bottom: none;
+}
+
 
 .table-container {
     display: flex;
@@ -228,6 +245,46 @@ td {
 
 .purchase {
     text-align: center;
+}
+
+.sction3 blockquote {
+    position: relative;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 14px;
+    padding: 18px 18px;
+    margin: 14px auto;
+    max-width: 650px;
+}
+
+.sction3 blockquote::before {
+    content: "“";
+    position: absolute;
+    top: -18px;
+    left: 12px;
+    font-size: 60px;
+    color: rgba(255, 255, 255, 0.35);
+    line-height: 1;
+}
+
+.sction3 blockquote::after {
+    content: "”";
+    position: absolute;
+    bottom: -38px;
+    right: 12px;
+    font-size: 60px;
+    color: rgba(255, 255, 255, 0.35);
+    line-height: 1;
+}
+
+.sction3 blockquote p:first-child {
+    margin-top: 0;
+    font-weight: 700;
+}
+
+.sction3 blockquote p:last-child {
+    margin-bottom: 0;
+    opacity: 0.9;
 }
 
 
@@ -372,10 +429,26 @@ input::placeholder {
     color: rgba(51, 51, 51, 0.45);
 }
 
-/* Focus ring (keyboard friendly) */
 input:focus {
     border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+/* Required fields */
+input:required {
+    border: 2px solid #e67e22;
+}
+
+/* When valid */
+input:required:valid {
+    border: 2px solid #2ecc71;
+    background-color: #f0fff4;
+}
+
+/* When invalid */
+input:required:invalid {
+    border: 2px solid #e74c3c;
+    background-color: #fff5f5;
 }
 
 /* Button */
@@ -427,8 +500,6 @@ input:focus {
     text-decoration: underline;
 }
 
-
-/*(start) edited 3:12 pm sorry late di talaga kaya sir, but kasi isang css file lang hahaha. kasamok lugod  */
 /* If cart list has no items */
 .cart-container ul:empty {
     min-height: 200px;
@@ -440,14 +511,20 @@ input:focus {
     justify-content: center;
 }
 
+/* Optional message when empty */
 .cart-container ul:empty::before {
     content: "Your cart is empty.";
     color: #e74c3c;
     font-weight: bold;
 }
-/*(end) edited 3:12 pm */
+
+.price::before {
+    content: "$ ";
+    font-weight: bold;
+}
 
 /* account.html */
+
 .topbar {
     position: sticky;
     top: 0;
@@ -612,183 +689,199 @@ input:focus {
     margin-bottom: 10px;
 }
 
+.order-list {
+    margin: 0;
+    padding-left: 22px;
+}
+
+.order-list li {
+    margin: 10px 0;
+}
+
+.order-list li::marker {
+    color: var(--accent-color);
+    font-size: 1.2em;
+    font-weight: 900;
+}
+
 /* checkout.html */
 .checkout {
-  background-color: var(--bg-light);
-  color: var(--text-main);
+    background-color: var(--bg-light);
+    color: var(--text-main);
 }
 
 nav ul li a {
-  text-decoration: none;
-  padding: 10px 12px;
-  color: var(--bg-light);
-  font-family: sans-serif;
-  transition: background-color 0.3s, color 0.3s;
+    text-decoration: none;
+    padding: 10px 12px;
+    color: var(--bg-light);
+    font-family: sans-serif;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 nav ul li a:hover {
-  background-color: var(--bg-light);
-  color: var(--text-main);
-  text-decoration: underline;
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    text-decoration: underline;
 }
 
 nav ul li a:focus {
-  outline: 3px solid var(--accent-color);
-  outline-offset: 3px;
+    outline: 3px solid var(--accent-color);
+    outline-offset: 3px;
 }
 
 .checkout-layout {
-  display: grid;
-  grid-template-columns: 1fr 360px;
-  gap: 20px;
-  padding: 20px;
-  align-items: start;
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 20px;
+    padding: 20px;
+    align-items: start;
 }
 
 .checkout-main {
-  display: grid;
-  gap: 18px;
+    display: grid;
+    gap: 18px;
 }
 
 .checkout-card {
-  background: #fff;
-  border-radius: 14px;
-  padding: 18px;
-  border: 1px solid rgba(0,0,0,0.08);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    background: #fff;
+    border-radius: 14px;
+    padding: 18px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
 }
 
 .checkout-card h2 {
-  margin: 0 0 12px;
-  font-size: 20px;
-  line-height: 1.2;
+    margin: 0 0 12px;
+    font-size: 20px;
+    line-height: 1.2;
 }
 
-fieldset {
+/* fieldset {
   border: 1px solid rgba(0,0,0,0.12);
   border-radius: 12px;
   padding: 14px;
   margin: 0 0 12px;
-}
+} */
 
 legend {
-  font-weight: 800;
-  padding: 0 8px;
-  color: var(--text-main);
+    font-weight: 800;
+    padding: 0 8px;
+    color: var(--text-main);
 }
 
 p {
-  margin: 0 0 12px;
+    margin: 0 0 12px;
 }
 
 label {
-  font-weight: 700;
-  font-size: 14px;
+    font-weight: 700;
+    font-size: 14px;
 }
 
 input {
-  width: 100%;
-  padding: 10px 12px;
-  border-radius: 10px;
-  border: 1px solid rgba(0,0,0,0.18);
-  transition: border-color 0.3s, box-shadow 0.3s;
+    width: 94%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.18);
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 input:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(0,123,255,0.22);
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.22);
 }
 
 .radio {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
 }
 
 .summary {
-  position: sticky;
-  top: 20px;
-  background: #fff;
-  border-radius: 14px;
-  padding: 18px;
-  border: 1px solid rgba(0,0,0,0.08);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    position: sticky;
+    top: 20px;
+    background: #fff;
+    border-radius: 14px;
+    padding: 18px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
 }
 
 .summary h2 {
-  margin: 0 0 12px;
-  font-size: 20px;
+    margin: 0 0 12px;
+    font-size: 20px;
 }
 
 .summary-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 14px;
-  display: grid;
-  gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 14px;
+    display: grid;
+    gap: 10px;
 }
 
 .summary-item {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 10px;
-  border-radius: 12px;
-  background: rgba(0,0,0,0.03);
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.03);
 }
 
 .row {
-  display: flex;
-  justify-content: space-between;
-  margin: 8px 0;
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0;
 }
 
 .total {
-  font-size: 18px;
-  font-weight: 900;
+    font-size: 18px;
+    font-weight: 900;
 }
 
 .place-order {
-  width: 100%;
-  padding: 12px 14px;
-  border: 1px solid rgba(0,0,0,0.25);
-  border-radius: 12px;
-  background-color: var(--accent-color);
-  color: #fff;
-  font-weight: 900;
-  cursor: pointer;
-  transition: filter 0.3s, transform 0.1s, box-shadow 0.3s;
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    background-color: var(--accent-color);
+    color: #fff;
+    font-weight: 900;
+    cursor: pointer;
+    transition: filter 0.3s, transform 0.1s, box-shadow 0.3s;
 }
 
 .place-order:hover {
-  filter: brightness(0.95);
-  box-shadow: 0 10px 18px rgba(230,126,34,0.25);
+    filter: brightness(0.95);
+    box-shadow: 0 10px 18px rgba(230, 126, 34, 0.25);
 }
 
 .place-order:active {
-  transform: scale(0.98);
+    transform: scale(0.98);
 }
 
 .place-order:focus {
-  outline: 3px solid var(--primary-color);
-  outline-offset: 3px;
+    outline: 3px solid var(--primary-color);
+    outline-offset: 3px;
 }
 
 .note {
-  color: rgba(51,51,51,0.75);
-  font-size: 14px;
-  margin-top: 8px;
+    color: rgba(51, 51, 51, 0.75);
+    font-size: 14px;
+    margin-top: 8px;
 }
 
 @media (max-width: 900px) {
-  .checkout-layout {
-    grid-template-columns: 1fr;
-  }
-  .summary {
-    position: static;
-  }
+    .checkout-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .summary {
+        position: static;
+    }
 }
 
 /* products.html */
@@ -798,6 +891,34 @@ input:focus {
     grid-template-columns: 280px 1fr;
     gap: 20px;
     padding: 22px 28px;
+}
+/* FIX alignment for checkbox + radio in filters */
+.filters label{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 2px;
+  line-height: 1.2;
+}
+
+/* reset checkbox/radio completely (overrides global input styles) */
+.filters input[type="checkbox"],
+.filters input[type="radio"]{
+  appearance: auto;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  flex: 0 0 auto;
+}
+
+/* Optional: make the click area nicer */
+.filters label input {
+    flex: 0 0 auto;
 }
 
 .filters {
@@ -971,6 +1092,4 @@ label {
     aside {
         position: static;
     }
-
 }
-

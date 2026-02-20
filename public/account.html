@@ -1,61 +1,65 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Account</title>
-    <link rel="stylesheet" href="styles/style.css"/>
-  </head>
 
-  <body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Account</title>
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+
+<body>
 
 
-    <header class="topbar">
-      <div>
-        <h1 class="logo">My Account</h1>
-        <p class="muted">Welcome, <strong>Guest</strong></p>
-      </div>
+  <header class="topbar">
+    <div>
+      <h1 class="logo">My Account</h1>
+      <p class="muted">Welcome, <strong>Guest</strong></p>
+    </div>
 
-      <nav class="topnav">
-        <ul>
-          <li><a href="landing.html">Home</a></li>
-          <li><a href="#orders">Order History</a></li>
-          <li><a href="#profile">Profile Settings</a></li>
-          <li><a href="#wishlist">Wishlist</a></li>
-        </ul>
-        <button type="button">Logout</button>
-      </nav>
-    </header>
+    <nav class="topnav">
+      <ul>
+        <li><a href="landing.html">Home</a></li>
+        <li><a href="#orders">Order History</a></li>
+        <li><a href="#profile">Profile Settings</a></li>
+        <li><a href="#wishlist">Wishlist</a></li>
+      </ul>
+      <button type="button">Logout</button>
+    </nav>
+  </header>
 
-    <main class="page">
-      <section id="orders">
-        <h2>Order History</h2>
-        <dl>
-          <dt>Order no.0928586</dt>
-          <dd>4Tech Mouse</dd>
-          
-        </dl>
-        <details>
-          <summary>Click to view the details</summary>
-          <dl>
-            <dd>Date: Feb 15, 2024</dd>
-            <dd>RGB, Wireless, Black</dd>
-            <dd>Price: $49.99</dd>
-            <dd>Qty: 1</dd>
-            <dd><strong>Status: Delivered</strong></dd>
-          </dl>
-        </details>
-      </section>
+  <main class="page">
+    <section id="orders">
+      <h2>Order History</h2>
 
-      <section id="profile" hidden>
-        <h2>Profile Settings</h2>
-        <p>Demo page. view update-name/email here later.</p>
-      </section>
+      <ul class="order-list">
+        <li>
+          <strong>Order no.0928586</strong> — 4Tech Mouse
 
-      <section id="wishlist" hidden>
-        <h2>Wishlist</h2>
-        <p c>Demo page. view wishlist items.</p>
-      </section>
-    </main>
-  </body>
+          <details>
+            <summary>Click to view the details</summary>
+            <dl>
+              <dd>Date: Feb 15, 2024</dd>
+              <dd>RGB, Wireless, Black</dd>
+              <dd>Price: $49.99</dd>
+              <dd>Qty: 1</dd>
+              <dd><strong>Status: Delivered</strong></dd>
+            </dl>
+          </details>
+        </li>
+      </ul>
+    </section>
+
+    <section id="profile" hidden>
+      <h2>Profile Settings</h2>
+      <p>Demo page. view update-name/email here later.</p>
+    </section>
+
+    <section id="wishlist" hidden>
+      <h2>Wishlist</h2>
+      <p>Demo page. view wishlist items.</p>
+    </section>
+  </main>
+</body>
+
 </html>

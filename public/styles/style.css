@@ -428,7 +428,7 @@ input:focus {
 }
 
 
-
+/*(start) edited 3:12 pm sorry late di talaga kaya sir, but kasi isang css file lang hahaha. kasamok lugod  */
 /* If cart list has no items */
 .cart-container ul:empty {
     min-height: 200px;
@@ -445,8 +445,9 @@ input:focus {
     color: #e74c3c;
     font-weight: bold;
 }
-/* account.html */
+/*(end) edited 3:12 pm */
 
+/* account.html */
 .topbar {
     position: sticky;
     top: 0;
@@ -972,3 +973,4 @@ label {
     }
 
 }
+

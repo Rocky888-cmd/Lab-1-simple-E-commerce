@@ -428,6 +428,23 @@ input:focus {
 }
 
 
+
+/* If cart list has no items */
+.cart-container ul:empty {
+    min-height: 200px;
+    background-color: #fef3f3;
+    border: 2px dashed #e74c3c;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-container ul:empty::before {
+    content: "Your cart is empty.";
+    color: #e74c3c;
+    font-weight: bold;
+}
 /* account.html */
 
 .topbar {
@@ -953,4 +970,5 @@ label {
     aside {
         position: static;
     }
+
 }

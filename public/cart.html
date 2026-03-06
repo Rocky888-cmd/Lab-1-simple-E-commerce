@@ -1,136 +1,129 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="styles/style.css" />
-  </head>
-  <body>
-    <header>
-      <nav>
-            <ul>
-                <li><a href="landing.html">Home</a></li>
-                <li><a href="products.html">Product</a></li>
-                <li><a href="cart.html">Cart</a></li>
-                <li><a href="account.html">Account</a></li>
-                <li><a href="signup.html">SignUp</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main class="page" >
-      <div class="cart-container" >
-        <ul>
-          <li>
-            <div class="cart-item">
-              <img
-                class="image-content"
-                src="assets/images/Gaming Mouse.jpg"
-                alt="gaming mouse"
-              />
-              <h3>Gaming Mouse</h3>
-              <!--(start) 3:21 pm  -->
-              <h3 class="price">$8.00</h3>
-              <!--(end) 3:21 pm  -->
-            </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
 
-            <div class="cart-item">
-              <span>
-                <input type="number" placeholder="2" min="1" value="1" />
-                <p>QTY</p>
-              </span>
-            </div>
-            <hr />
-            <div>
-              <!--(start) 3:21 pm -->
-              <h3 class="price">16.00</h3>
-              <!--(end) 3:21 pm -->
-            </div>
-          </li>
-
-          <li>
-            <div class="cart-item">
-              <img
-                class="image-content"
-                src="assets/images/victus.png"
-                alt="gaming laptop"
-              />
-              <h3>Victus Laptop</h3>
-              <!--(start) 3:21 pm -->
-              <h3 class="price">15,000.00</h3>
-              <!--(end) 3:21 pm -->
-            </div>
-
-            <div class="cart-item">
-              <span>
-                <input type="number" placeholder="1" min="2" value="1" />
-                <p>QTY</p>
-              </span>
-            </div>
-            <hr />
-            <div>
-              <!--(start) 3:21 pm -->
-              <h3 class="price">15,000.00</h3>
-              <!--(end) 3:21 pm -->
-            </div>
-          </li>
-
-          <li>
-            <div class="cart-item">
-              <img
-                class="image-content"
-                src="assets/images/Mechanical Keyboard.jpg"
-                alt="Mechanical Keyboard"
-              />
-              <h3>Mechanical Keyboard</h3>
-              <!--(start) 3:21 pm -->
-              <h3 class="price">10.00</h3>
-              <!--(end) 3:21 pm -->
-            </div>
-
-            <div class="cart-item">
-              <span>
-                <input type="number" placeholder="1" min="1" value="1" />
-                <p>QTY</p>
-              </span>
-            </div>
-            <hr />
-            <div>
-              <!--(start) 3:21 pm -->
-              <h3 class="price">Subtotal: 10.00</h3>
-              <!--(end) 3:21 pm -->
-            </div>
-          </li>
-        </ul>
-
+<body>
+  <header>
+    <nav class="main-nav">
+      <div class="logo-box">
+        <img src="assets/logo.png" alt="logo" class="logo-img">
       </div>
+      <ul class="nav-links">
+        <li><a href="landing.html">Home</a></li>
+        <li><a href="products.html">Product</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="account.html">Account</a></li>
+        <li><a href="signup.html">SignUp</a></li>
+      </ul>
+    </nav>
+  </header>
 
-      <section class="cart-total-container" >
-        <div class="cart-total">
-          <div class="cart-total-data">
-            <h3>Total:</h3>
+  <main class="page">
+    <div class="cart-container">
+      <ul>
+        <li>
+          <div class="cart-item">
+            <img class="image-content" src="assets/images/Gaming Mouse.jpg" alt="gaming mouse" />
+            <h3>Gaming Mouse</h3>
+            <!--(start) 3:21 pm  -->
+            <h3 class="price">$8.00</h3>
+            <!--(end) 3:21 pm  -->
+          </div>
+
+          <div class="cart-item">
+            <span>
+              <input type="number" placeholder="2" min="1" value="1" />
+              <p>QTY</p>
+            </span>
+          </div>
+          <hr />
+          <div>
             <!--(start) 3:21 pm -->
-            <h3 class="price">15,026</h3>
+            <h3 class="price">16.00</h3>
+            <!--(end) 3:21 pm -->
+          </div>
+        </li>
+
+        <li>
+          <div class="cart-item">
+            <img class="image-content" src="assets/images/victus.png" alt="gaming laptop" />
+            <h3>Victus Laptop</h3>
+            <!--(start) 3:21 pm -->
+            <h3 class="price">15,000.00</h3>
             <!--(end) 3:21 pm -->
           </div>
 
-          <hr>
+          <div class="cart-item">
+            <span>
+              <input type="number" placeholder="1" min="2" value="1" />
+              <p>QTY</p>
+            </span>
+          </div>
+          <hr />
+          <div>
+            <!--(start) 3:21 pm -->
+            <h3 class="price">15,000.00</h3>
+            <!--(end) 3:21 pm -->
+          </div>
+        </li>
 
-          <a class="checkoutBtn" href="checkout.html">Proceed to Checkout</a>
+        <li>
+          <div class="cart-item">
+            <img class="image-content" src="assets/images/Mechanical Keyboard.jpg" alt="Mechanical Keyboard" />
+            <h3>Mechanical Keyboard</h3>
+            <!--(start) 3:21 pm -->
+            <h3 class="price">10.00</h3>
+            <!--(end) 3:21 pm -->
+          </div>
+
+          <div class="cart-item">
+            <span>
+              <input type="number" placeholder="1" min="1" value="1" />
+              <p>QTY</p>
+            </span>
+          </div>
+          <hr />
+          <div>
+            <!--(start) 3:21 pm -->
+            <h3 class="price">Subtotal: 10.00</h3>
+            <!--(end) 3:21 pm -->
+          </div>
+        </li>
+      </ul>
+
+    </div>
+
+    <section class="cart-total-container">
+      <div class="cart-total">
+        <div class="cart-total-data">
+          <h3>Total:</h3>
+          <!--(start) 3:21 pm -->
+          <h3 class="price">15,026</h3>
+          <!--(end) 3:21 pm -->
         </div>
-      </section>
 
-      <section class="cart-empty-container">
-        <div class="cart-empty">
-          <p>
-            Your cart is currently empty, click here to view the
-            <a class="empty-layout" href="product.html">Product</a>
-          </p>
-        </div>
-      </section>
+        <hr>
 
-    </main>
-  </body>
+        <a class="checkoutBtn" href="checkout.html">Proceed to Checkout</a>
+      </div>
+    </section>
+
+    <section class="cart-empty-container">
+      <div class="cart-empty">
+        <p>
+          Your cart is currently empty, click here to view the
+          <a class="empty-layout" href="product.html">Product</a>
+        </p>
+      </div>
+    </section>
+
+  </main>
+</body>
 
 </html>

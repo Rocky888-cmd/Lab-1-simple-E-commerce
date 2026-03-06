@@ -1,0 +1,103 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+  <body>
+    <header>
+      <a class="site-logo" href="landing.html">
+      <img src="assets/airpod.jpg" alt="Academic Tech Shop logo">
+      <span>Academic Tech Shop</span>
+    </a>
+      <nav>
+            <ul>
+                <li><a href="landing.html">Home</a></li>
+                <li><a href="products.html">Product</a></li>
+                <li><a href="cart.html" aria-current="page">Cart</a></li>
+                <li><a href="account.html">Account</a></li>
+                <li><a href="signup.html">SignUp</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page" >
+      <div class="cart-container" >
+        <ul>
+          <li>
+            <img
+              class="image-content"
+              src="assets/mouse.jpg"
+              alt="Gaming Mouse"
+            />
+            <div class="cart-info">
+              <h3>Gaming Mouse</h3>
+              <p>$49.00</p>
+            </div>
+            <label class="qty-control" for="qty-mouse">Qty
+              <input id="qty-mouse" type="number" min="1" value="1" />
+            </label>
+          </li>
+
+          <li>
+            <img
+              class="image-content"
+              src="assets/victus.jpg"
+              alt="HP Victus Laptop"
+            />
+            <div class="cart-info">
+              <h3>HP Victus Laptop</h3>
+              <p>$1,199.00</p>
+            </div>
+            <label class="qty-control" for="qty-victus">Qty
+              <input id="qty-victus" type="number" min="1" value="1" />
+            </label>
+          </li>
+
+          <li>
+            <img
+              class="image-content"
+              src="assets/smart_watch.jpg"
+              alt="Smart Watch Series X"
+            />
+            <div class="cart-info">
+              <h3>Smart Watch Series X</h3>
+              <p>$129.00</p>
+            </div>
+            <label class="qty-control" for="qty-watch">Qty
+              <input id="qty-watch" type="number" min="1" value="1" />
+            </label>
+          </li>
+        </ul>
+
+      </div>
+
+      <section class="cart-total-container" >
+        <div class="cart-total">
+          <div class="cart-total-data">
+            <h3>Total:</h3>
+            <h3>$1,377.00</h3>
+          </div>
+
+          <hr>
+
+          <a class="checkoutBtn" href="checkout.html">Proceed to Checkout</a>
+        </div>
+      </section>
+
+      <section class="cart-empty-container">
+        <div class="cart-empty">
+          <p>
+            Your cart is currently empty, click here to view the
+            <a class="empty-layout" href="products.html">Product</a>
+          </p>
+        </div>
+      </section>
+
+    </main>
+  </body>
+
+</html>
+

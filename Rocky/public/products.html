@@ -1,0 +1,246 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products</title>
+    <link rel="stylesheet" href="styles/style.css" />
+</head>
+
+<body>
+
+    <header>
+        <a class="site-logo" href="landing.html">
+      <img src="assets/airpod.jpg" alt="Academic Tech Shop logo">
+      <span>Academic Tech Shop</span>
+    </a>
+        <nav>
+            <ul>
+                <li><a href="landing.html">Home</a></li>
+                <li><a href="products.html" aria-current="page">Product</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="account.html">Account</a></li>
+                <li><a href="signup.html">SignUp</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="layout">
+        <!-- ASIDE FILTERS -->
+        <aside class="filters">
+            <h2>Filter</h2>
+
+            <form>
+                <fieldset>
+                    <legend>Category</legend>
+
+                    <label>
+                        <input type="checkbox" name="category" value="laptop" />
+                        Laptop
+                    </label>
+
+                    <label>
+                        <input type="checkbox" name="category" value="mouse" />
+                        Mouse
+                    </label>
+
+                    <label>
+                        <input type="checkbox" name="category" value="keyboard" />
+                        Keyboard
+                    </label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Price</legend>
+
+                    <label>
+                        <input type="radio" name="price" value="all" checked />
+                        All
+                    </label>
+
+                    <label>
+                        <input type="radio" name="price" value="0-1000" />
+                        $0 - $1,000
+                    </label>
+
+                    <label>
+                        <input type="radio" name="price" value="1001-5000" />
+                        $1,001 - $5,000
+                    </label>
+
+                    <label>
+                        <input type="radio" name="price" value="5001+" />
+                        $5,001+
+                    </label>
+                </fieldset>
+
+                <button type="button" id="applyFiltersBtn">Apply Filters</button>
+                <button type="button" id="resetFiltersBtn">Reset</button>
+            </form>
+        </aside>
+
+        <!-- MAIN GRID -->
+        <main class="products">
+            <h2>All Products</h2>
+
+            <section class="grid">
+                <article class="product-card">
+                    <img src="assets/airpod.jpg" alt="Wireless AirPods Pro" />
+                    <div class="product-body">
+                        <h3>Wireless AirPods Pro</h3>
+                        <p class="price">199</p>
+
+                        <div class="actions">
+                            <a href="detail-airpod.html">View Details</a>
+                            <button type="button" data-id="1">Add to Cart</button>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <img src="assets/bluewow.jpg" alt="BlueWow Cellphone Cooler" />
+                    <div class="product-body">
+                        <h3>BlueWow Portable Cellphone Cooler</h3>
+                        <p class="price">79</p>
+
+                        <div class="actions">
+                            <a href="detail-bluewow.html">View Details</a>
+                            <button type="button" data-id="2">Add to Cart</button>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <img src="assets/charger.jpg" alt="65W Fast Charger" />
+                    <div class="product-body">
+                        <h3>120W Fast Charger</h3>
+                        <p class="price">25</p>
+
+                        <div class="actions">
+                            <a href="detail-charger.html">View Details</a>
+                            <button type="button" data-id="3">Add to Cart</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img src="assets/charger1.jpg" alt="Wireless Charger Pad" />
+                    <div class="product-body">
+                        <h3>Redmi 120W Fast Charger</h3>
+                        <p class="price">29</p>
+
+                        <div class="actions">
+                            <a href="detail-charger1.html">View Details</a>
+                            <button type="button" data-id="4">Add to Cart</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img src="assets/iphone.jpg" alt="iPhone 15" />
+                    <div class="product-body">
+                        <h3>iPhone 15</h3>
+                        <p class="price">999</p>
+
+                        <div class="actions">
+                            <a href="detail-iphone.html">View Details</a>
+                            <button type="button" data-id="5">Add to Cart</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img src="assets/laptop-stand.jpg" alt="Adjustable Laptop Stand" />
+                    <div class="product-body">
+                        <h3>Adjustable Laptop Stand</h3>
+                        <p class="price">39</p>
+
+                        <div class="actions">
+                            <a href="detail-laptop-stand.html">View Details</a>
+                            <button type="button" data-id="6">Add to Cart</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img src="assets/mouse.jpg" alt="Gaming Mouse" />
+                    <div class="product-body">
+                        <h3>Gaming Mouse</h3>
+                        <p class="price">49</p>
+
+                        <div class="actions">
+                            <a href="detail-mouse.html">View Details</a>
+                            <button type="button" data-id="7">Add to Cart</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img src="assets/nintendo.jpg" alt="Nintendo Switch OLED" />
+                    <div class="product-body">
+                        <h3>Nintendo Switch OLED</h3>
+                        <p class="price">349</p>
+
+                        <div class="actions">
+                            <a href="detail-nintendo.html">View Details</a>
+                            <button type="button" data-id="8">Add to Cart</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img src="assets/powerbank.jpg" alt="Power Bank 20000mAh" />
+                    <div class="product-body">
+                        <h3>Power Bank 20000mAh</h3>
+                        <p class="price">45</p>
+
+                        <div class="actions">
+                            <a href="detail-powerbank.html">View Details</a>
+                            <button type="button" data-id="9">Add to Cart</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img src="assets/smart_watch.jpg" alt="Smart Watch Series X" />
+                    <div class="product-body">
+                        <h3>Smart Watch Series X</h3>
+                        <p class="price">129</p>
+
+                        <div class="actions">
+                            <a href="detail-smart-watch.html">View Details</a>
+                            <button type="button" data-id="10">Add to Cart</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img src="assets/tablet.jpg" alt="Android Tablet 11" />
+                    <div class="product-body">
+                        <h3>Android Tablet 11</h3>
+                        <p class="price">299</p>
+
+                        <div class="actions">
+                            <a href="detail-tablet.html">View Details</a>
+                            <button type="button" data-id="11">Add to Cart</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img src="assets/victus.jpg" alt="HP Victus Laptop" />
+                    <div class="product-body">
+                        <h3>HP Victus Laptop</h3>
+                        <p class="price">1199</p>
+
+                        <div class="actions">
+                            <a href="detail-victus.html">View Details</a>
+                            <button type="button" data-id="12">Add to Cart</button>
+                        </div>
+                    </div>
+                </article>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>
+

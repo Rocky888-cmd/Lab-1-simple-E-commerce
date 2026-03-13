@@ -86,6 +86,7 @@ function calculateTotal(...numbers) {
     } catch (error) {
         console.log(error.message);
     }
+    //
     // if (!numbers.every(num => typeof num === "number")) {
     //     throw new TypeError("Invalid input: All arguments must be numbers");
     // }

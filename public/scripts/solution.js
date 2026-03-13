@@ -74,7 +74,7 @@ function generateIDs(count) {
 console.log(generateIDs(7));
 
 
-// try bto
+// try
 function calculateTotal(...numbers) {
     try {
         if (!numbers.every(num => typeof num === "number")) {

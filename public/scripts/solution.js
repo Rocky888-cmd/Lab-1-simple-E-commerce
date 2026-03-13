@@ -34,6 +34,8 @@ function checkVariable(input) {
 //   rl.close();
 // });
 
+console.log("---------------Problem 1----------------\n");
+
 const prompt = require("prompt-sync")();
 
 let name = prompt("Enter any datatype:");
@@ -50,6 +52,7 @@ if (name == "true") {
 }
 
 console.log(checkVariable(name));
+console.log("\n");
 
 
 
@@ -71,7 +74,10 @@ function generateIDs(count) {
     return result;
 }
 
+console.log("---------------Problem 2----------------\n");
 console.log(generateIDs(7));
+console.log("\n");
+
 
 
 // try
@@ -93,8 +99,10 @@ function calculateTotal(...numbers) {
     // return numbers.reduce((sum, num) => sum + num, 0);
 }
 
+console.log("---------------Problem 3----------------\n");
 console.log("Sum:", calculateTotal(5, 10, 15));
 console.log("Sum:", calculateTotal("1", "7", "3", "4"));
+console.log("\n");
 // try {
 //     console.log("Sum:", calculateTotal(5, 10, 15));
 //     console.log("Sum:", calculateTotal("1", "7", "3", "4"));
@@ -142,5 +150,30 @@ const playerList =[
     {"name": "julius", "score": 1}
 ]
 
+console.log("---------------Problem 4----------------\n");
 console.log(getTopScorers(playerList));
+console.log("\n");
 
+function safeDivide(a,b) {
+
+    try {
+        if (b===0) {
+            throw new Error(`${a} cannot divide by ${b}`);
+            
+        }
+
+        return a / b;
+    } catch (error) {
+        return error.message;
+        
+    }finally{
+        console.log("Operation attempted");
+    }
+    
+}
+
+console.log("---------------Problem 5----------------\n");
+
+console.log(safeDivide(9,0));
+console.log("\n");
+console.log(safeDivide(9,3));

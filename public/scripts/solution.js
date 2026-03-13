@@ -38,20 +38,32 @@ console.log("---------------Problem 1----------------\n");
 
 const prompt = require("prompt-sync")();
 
-let name = prompt("Enter any datatype:");
-if (!isNaN(name)) {
-    name = Number(name);
+let input = prompt("Enter any datatype: ");
 
+if (input === "") {
+    input = undefined;
 }
-if (name == "true") {
-    name = name == "true"
+else if (input === "true") {
+    input = true;
+}
+else if (input === "false") {
+    input = false;
+}
+else if (/^\d+n$/.test(input)) {
+    input = BigInt(input.slice(0, -1));
+}
+else if (/^\{.*\}$/.test(input) || /^\[.*\]$/.test(input)) {
+    try {
+        input = JSON.parse(input);
+    } catch (e) {
 
-
-} else if (name == "false") {
-    name = name == "false"
+    }
+}
+else if (!isNaN(input)) {
+    input = Number(input);
 }
 
-console.log(checkVariable(name));
+console.log(checkVariable(input));
 console.log("\n");
 
 
@@ -141,7 +153,7 @@ const playerList =[
     {"name": "rocky", "score": 9},
     {"name": "kyle", "score": 5},
     {"name": "kai", "score": 6},
-    {"name": "junel", "score": 9},
+    {"name": "junel", "score": 8},
 
     {"name": "judy", "score": 7},
     {"name": "shella", "score": 6},
@@ -158,7 +170,7 @@ function safeDivide(a,b) {
 
     try {
         if (b===0) {
-            throw new Error(`${a} cannot divide by ${b}`);
+            throw new Error(`Cannot divide by zero`);
             
         }
 

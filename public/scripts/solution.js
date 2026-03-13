@@ -101,3 +101,46 @@ console.log("Sum:", calculateTotal("1", "7", "3", "4"));
 // } catch (error) {
 //     console.log(error.message);
 // }
+
+
+// function getScorers(playerList) {
+
+//     let topScorers = [];
+
+//     for (let i = 0; i < playerList.length; i++) {
+//         let player = playerList[i];
+
+//         if (player.score > 8) {
+//             topScorers.push(player.name);
+            
+//         }
+        
+//     }
+//     return topScorers.join(",");
+
+
+    
+// }
+
+function getTopScorers(playerList) {
+    return playerList
+        .filter(player => player.score > 8)       
+        .map(player => player.name)               
+        .join(', ');                              
+}
+const playerList =[
+    {"name": "Jona", "score": 10},
+    {"name": "rocky", "score": 9},
+    {"name": "kyle", "score": 5},
+    {"name": "kai", "score": 6},
+    {"name": "junel", "score": 9},
+
+    {"name": "judy", "score": 7},
+    {"name": "shella", "score": 6},
+    {"name": "nicole", "score": 5},
+    {"name": "jennie", "score": 5},
+    {"name": "julius", "score": 1}
+]
+
+console.log(getTopScorers(playerList));
+

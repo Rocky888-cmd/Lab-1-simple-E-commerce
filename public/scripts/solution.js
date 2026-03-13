@@ -144,3 +144,22 @@ const playerList =[
 
 console.log(getTopScorers(playerList));
 
+class Item {
+
+    #discount = 0.1;
+
+    constructor(name, price) {
+        this.name =name;
+        this.price = price;
+
+    }
+    get finalPrice() {
+        return this.price - (this.price * this.#discount);
+
+    }
+}
+
+const item1 = new Item("laptop", 1000);
+
+console.log("item: ", item1.name);
+console.log("Final Price: ", item1.finalPrice);

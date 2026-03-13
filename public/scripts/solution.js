@@ -26,18 +26,19 @@ function checkVariable(input) {
 function generateIDs(count) {
 
     const ids = [0,1,2,3,4,5,6,7];
-    
+    const result = [];
 
-    for (let i = 0; i < ids.length -1 ; i++) {
-        const element = ids[i];
+    for (let i = 0; i <= count; i++) {
 
-        if(element===5){
-            continue
-        }      
-        const count = ids[i];
-        return count;
+        if (i === 5) {
+            continue;
+        }
+
+        const id = `ID-${ids[i]}`;
+        result.push(id);
     }
-    
+
+    return result;
 }
 
 console.log(generateIDs(7));

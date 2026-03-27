@@ -789,6 +789,15 @@ input:required:invalid {
     margin-bottom: 10px;
 }
 
+.order-details {
+    padding-top: 8px;
+}
+
+.order-details p,
+.order-details li {
+    font-size: 15px;
+}
+
 .order-list {
     margin: 0;
     padding-left: 22px;
@@ -890,6 +899,19 @@ input:focus {
     outline: none;
     border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.22);
+}
+
+input.error {
+    border-color: #c0392b;
+    box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.16);
+}
+
+.error-message {
+    min-height: 18px;
+    margin-top: 6px;
+    color: #c0392b;
+    font-size: 13px;
+    font-weight: 600;
 }
 
 .radio {
@@ -996,6 +1018,7 @@ input:focus {
 .back:hover {
     color: var(--text-main);
 }
+
 @media (max-width: 900px) {
     .checkout-layout {
         grid-template-columns: 1fr;
@@ -1188,6 +1211,30 @@ label {
 
 .actions button:hover {
     filter: brightness(0.95);
+}
+
+/* =========================
+   Task 6: Interactive Feedback (Animations)
+   ========================= */
+.fade-in {
+    animation: cartFlash 0.7s ease;
+}
+
+@keyframes cartFlash {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 10px 30px rgba(17, 24, 39, 0.08);
+    }
+
+    50% {
+        transform: scale(1.03);
+        box-shadow: 0 16px 36px rgba(34, 197, 94, 0.28);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 10px 30px rgba(17, 24, 39, 0.08);
+    }
 }
 
 

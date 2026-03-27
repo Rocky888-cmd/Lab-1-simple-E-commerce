@@ -11,6 +11,16 @@ class Product {
     }
 }
 
+class CartItem {
+    constructor(product, quantity) {
+        this.id = product.id;
+        this.name = product.name;
+        this.price = product.price;
+        this.image = product.image;
+        this.quantity = quantity;
+    }
+}
+
 const products = [
     new Product(1, "Gaming Mouse", 700, "assets/mouse.jpg"),
     new Product(2, "Tablet", 10000, "assets/tablet.jpg"),
@@ -23,6 +33,24 @@ const products = [
     new Product(9, "Portable Laptop", 18000, "assets/images/victus.png"),
     new Product(10, "Gaming Tablet", 13000, "assets/tablet.jpg")
 ];
+
+const currentUser = {
+    name: "Jona",
+    orderHistory: [
+        {
+            orderNumber: "0928586",
+            date: "Feb 15, 2024",
+            total: "$49.99",
+            items: ["4Tech Mouse", "RGB, Wireless, Black", "Qty: 1", "Status: Delivered"]
+        },
+        {
+            orderNumber: "1032471",
+            date: "Mar 03, 2024",
+            total: "$15,000.00",
+            items: ["Victus Laptop", "16GB RAM, 512GB SSD", "Qty: 1", "Status: Shipped"]
+        }
+    ]
+};
 
 
 const productGrid = document.querySelector(".product-grid");
@@ -102,13 +130,17 @@ document.body.addEventListener("click", function(event) {
         if (existingItem) {
             existingItem.quantity += 1;
         } else {
-            cart.push({
-                id: selectedProduct.id,
-                name: selectedProduct.name,
-                price: selectedProduct.price,
-                image: selectedProduct.image,
-                quantity: 1
-            });
+            cart.push(new CartItem(selectedProduct, 1));
+        }
+
+        const productCard = event.target.closest(".product-card");
+
+        if (productCard) {
+            productCard.classList.add("fade-in");
+
+            setTimeout(function() {
+                productCard.classList.remove("fade-in");
+            }, 700);
         }
 
         renderCart();
@@ -129,7 +161,6 @@ function renderCart() {
     cart.forEach(function(item) {
 
         const li = document.createElement("li");
-
         const name = document.createElement("h3");
         name.textContent = item.name;
 
@@ -179,4 +210,132 @@ document.body.addEventListener("input", function(event) {
 
         renderCart();
     }
+});
+
+// =======================
+// Task 4: Form Validation & Submission (checkout.html)
+// =======================
+
+const paymentForm = document.querySelector("#paymentForm");
+
+if (paymentForm) {
+    const fullNameInput = document.querySelector("#fullName");
+    const streetInput = document.querySelector("#street");
+    const zipInput = document.querySelector("#zip");
+    const cardNumberInput = document.querySelector("#cardNumber");
+    const expiryInput = document.querySelector("#expiry");
+    const cvvInput = document.querySelector("#cvv");
+
+    function getErrorElement(input) {
+        let errorElement = input.parentElement.querySelector(".error-message");
+
+        if (!errorElement) {
+            errorElement = document.createElement("small");
+            errorElement.classList.add("error-message");
+            input.parentElement.appendChild(errorElement);
+        }
+
+        return errorElement;
+    }
+
+    function showError(input, message) {
+        input.classList.add("error");
+        getErrorElement(input).textContent = message;
+    }
+
+    function clearError(input) {
+        input.classList.remove("error");
+        getErrorElement(input).textContent = "";
+    }
+
+    paymentForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        let isValid = true;
+        const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
+
+        clearError(fullNameInput);
+        clearError(streetInput);
+        clearError(zipInput);
+        clearError(cardNumberInput);
+        clearError(expiryInput);
+        clearError(cvvInput);
+
+        if (fullNameInput.value.trim() === "") {
+            showError(fullNameInput, "Full name is required.");
+            isValid = false;
+        }
+
+        if (streetInput.value.trim() === "") {
+            showError(streetInput, "Street address is required.");
+            isValid = false;
+        }
+
+        if (zipInput.value.trim() === "") {
+            showError(zipInput, "Zip code is required.");
+            isValid = false;
+        }
+
+        if (paymentMethod && paymentMethod.value === "card") {
+            if (cardNumberInput.value.trim() === "") {
+                showError(cardNumberInput, "Card number is required.");
+                isValid = false;
+            }
+
+            if (expiryInput.value.trim() === "") {
+                showError(expiryInput, "Expiry date is required.");
+                isValid = false;
+            }
+
+            if (cvvInput.value.trim() === "") {
+                showError(cvvInput, "CVV is required.");
+                isValid = false;
+            }
+        }
+
+        if (isValid) {
+            console.log("Form submitted successfully.");
+            window.location.href = "thankyou.html";
+        }
+    });
+}
+
+// =======================
+// Task 5: User Account & Order History (account.html)
+// =======================
+
+const accountGreeting = document.querySelector("#accountGreeting");
+const accountName = document.querySelector("#accountName");
+const orderSummaries = document.querySelectorAll(".order-list summary");
+
+if (accountGreeting && accountName) {
+    accountGreeting.textContent = currentUser.name + "'s Account";
+    accountName.textContent = currentUser.name;
+}
+
+orderSummaries.forEach(function(summary) {
+    summary.addEventListener("click", function() {
+        const details = summary.parentElement;
+        const detailsContent = details.querySelector(".order-details");
+        const orderIndex = details.getAttribute("data-order-index");
+        const order = currentUser.orderHistory[orderIndex];
+
+        if (!order || detailsContent.getAttribute("data-loaded") === "true") {
+            return;
+        }
+
+        let itemsMarkup = "";
+
+        order.items.forEach(function(item) {
+            itemsMarkup += "<li>" + item + "</li>";
+        });
+
+        detailsContent.innerHTML =
+            "<p>Date: " + order.date + "</p>" +
+            "<p>Total: " + order.total + "</p>" +
+            "<p>Items:</p>" +
+            "<ul>" + itemsMarkup + "</ul>";
+
+        detailsContent.setAttribute("data-loaded", "true");
+    });
 });

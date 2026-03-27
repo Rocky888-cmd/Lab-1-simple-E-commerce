@@ -28,7 +28,7 @@
       <section class="checkout-card">
         <h2>Shipping</h2>
 
-        <form>
+        <form id="shippingForm" novalidate>
           <fieldset>
             <legend>Shipping Address</legend>
 
@@ -54,7 +54,7 @@
       <section class="checkout-card">
         <h2>Payment</h2>
 
-        <form id="paymentForm">
+        <form id="paymentForm" novalidate>
           <fieldset>
             <legend>Payment Method</legend>
 
@@ -100,7 +100,7 @@
     <aside class="summary">
       <h2>Order Summary</h2>
 
-      <ul class="summary-list">
+      <!-- <ul class="summary-list">
         <li class="summary-item">
           <div>
             <p><strong>Gaming Mouse</strong></p>
@@ -127,18 +127,19 @@
           </div>
           <p><strong>$10.00</strong></p>
         </li>
-      </ul>
+      </ul> -->
 
       <hr />
 
-      <p class="row"><span>SubTotal</span><span>$15,026.00</span></p>
-      <p class="row"><span>Shipping fee</span><span>$8.00</span></p>
-      <p class="row"><span>Discount</span><span>- $15.00</span></p>
+      <p class="row"><span>SubTotal</span><span>$0.00</span></p>
+      <p class="row"><span>Shipping fee</span><span>$0.00</span></p>
+      <p class="row"><span>Discount</span><span>- $0.00</span></p>
 
-      <p class="row total"><span>Total</span><span>$15,034.00</span></p>
+      <p class="row total"><span>Total</span><span>$0.00</span></p>
 
-      <button class="place-order" type="button">Place Order</button>
+      <button class="place-order" type="submit" form="paymentForm">Place Order</button>
     </aside>
   </div>
+  <script src="scripts/script.js"></script>
 </body>
 </html>

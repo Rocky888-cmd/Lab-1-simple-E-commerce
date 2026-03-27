@@ -196,14 +196,16 @@ document.body.addEventListener("input", function (event) {
         renderCart();
     }
 });
-
-// =======================
+// ======================= 
 // Task 4: Form Validation & Submission (checkout.html)
 // =======================
 
+// Select the payment form
 const paymentForm = document.querySelector("#paymentForm");
 
 if (paymentForm) {
+
+    // Get all required input fields
     const fullNameInput = document.querySelector("#fullName");
     const streetInput = document.querySelector("#street");
     const zipInput = document.querySelector("#zip");
@@ -211,6 +213,11 @@ if (paymentForm) {
     const expiryInput = document.querySelector("#expiry");
     const cvvInput = document.querySelector("#cvv");
 
+    // ----------------------------------
+    // Function: Get or create error message element
+    // ----------------------------------
+    // Checks if an error message already exists beside the input.
+    // If not, it creates a <small> element for displaying errors.
     function getErrorElement(input) {
         let errorElement = input.parentElement.querySelector(".error-message");
 
@@ -223,22 +230,39 @@ if (paymentForm) {
         return errorElement;
     }
 
+    // ----------------------------------
+    // Function: Display validation error
+    // ----------------------------------
+    // Adds error styling and shows message under the input field.
     function showError(input, message) {
         input.classList.add("error");
         getErrorElement(input).textContent = message;
     }
 
+    // ----------------------------------
+    // Function: Clear validation error
+    // ----------------------------------
+    // Removes error styling and clears message.
     function clearError(input) {
         input.classList.remove("error");
         getErrorElement(input).textContent = "";
     }
 
+    // ----------------------------------
+    // Form Submission Event
+    // ----------------------------------
     paymentForm.addEventListener("submit", function(event) {
+
+        // Prevent default form submission
         event.preventDefault();
 
         let isValid = true;
-        const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
 
+        // Get selected payment method (card or other)
+        const paymentMethod =
+            document.querySelector('input[name="paymentMethod"]:checked');
+
+        // Clear previous validation errors
         clearError(fullNameInput);
         clearError(streetInput);
         clearError(zipInput);
@@ -246,22 +270,30 @@ if (paymentForm) {
         clearError(expiryInput);
         clearError(cvvInput);
 
+        // -------- Required Field Validation --------
+
+        // Validate Full Name
         if (fullNameInput.value.trim() === "") {
             showError(fullNameInput, "Full name is required.");
             isValid = false;
         }
 
+        // Validate Street Address
         if (streetInput.value.trim() === "") {
             showError(streetInput, "Street address is required.");
             isValid = false;
         }
 
+        // Validate Zip Code
         if (zipInput.value.trim() === "") {
             showError(zipInput, "Zip code is required.");
             isValid = false;
         }
 
+        // -------- Conditional Card Validation --------
+        // Only validate card fields if payment method is "card"
         if (paymentMethod && paymentMethod.value === "card") {
+
             if (cardNumberInput.value.trim() === "") {
                 showError(cardNumberInput, "Card number is required.");
                 isValid = false;
@@ -278,6 +310,8 @@ if (paymentForm) {
             }
         }
 
+        // -------- Successful Validation --------
+        // Redirect user when all inputs are valid
         if (isValid) {
             console.log("Form submitted successfully.");
             window.location.href = "thankyou.html";
@@ -285,44 +319,61 @@ if (paymentForm) {
     });
 }
 
+
 // =======================
 // Task 5: User Account & Order History (account.html)
 // =======================
 
+// Select account page elements
 const accountGreeting = document.querySelector("#accountGreeting");
 const accountName = document.querySelector("#accountName");
 const orderSummaries = document.querySelectorAll(".order-list summary");
 
+// ----------------------------------
+// Display Logged-in User Information
+// ----------------------------------
 if (accountGreeting && accountName) {
+    // Update greeting and username using currentUser object
     accountGreeting.textContent = currentUser.name + "'s Account";
     accountName.textContent = currentUser.name;
 }
 
 
-
+// ----------------------------------
+// Order History Expand Logic
+// ----------------------------------
+// Loads order details only when user clicks the summary.
 orderSummaries.forEach(function(summary) {
+
     summary.addEventListener("click", function() {
+
         const details = summary.parentElement;
         const detailsContent = details.querySelector(".order-details");
+
+        // Get order index stored in HTML attribute
         const orderIndex = details.getAttribute("data-order-index");
         const order = currentUser.orderHistory[orderIndex];
 
+        // Stop if order doesn't exist or already loaded
         if (!order || detailsContent.getAttribute("data-loaded") === "true") {
             return;
         }
 
         let itemsMarkup = "";
 
+        // Generate list of ordered items dynamically
         order.items.forEach(function(item) {
             itemsMarkup += "<li>" + item + "</li>";
         });
 
+        // Insert order information into HTML
         detailsContent.innerHTML =
             "<p>Date: " + order.date + "</p>" +
             "<p>Total: " + order.total + "</p>" +
             "<p>Items:</p>" +
             "<ul>" + itemsMarkup + "</ul>";
 
+        // Mark as loaded to prevent re-rendering
         detailsContent.setAttribute("data-loaded", "true");
     });
 });

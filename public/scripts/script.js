@@ -12,20 +12,7 @@ class Product {
     }
 }
 
-<<<<<<< HEAD
-class CartItem {
-    constructor(product, quantity) {
-        this.id = product.id;
-        this.name = product.name;
-        this.price = product.price;
-        this.image = product.image;
-        this.quantity = quantity;
-    }
-}
-
-=======
 // Array of products (serves as temporary data source)
->>>>>>> ac144c0f2ff19c843760e92c1aa679f0e55af9ba
 const products = [
     new Product(1, "Gaming Mouse", 700, "assets/mouse.jpg"),
     new Product(2, "Tablet", 10000, "assets/tablet.jpg"),
@@ -39,29 +26,8 @@ const products = [
     new Product(10, "Smart Watch", 13000, "assets/smart_watch.jpg")
 ];
 
-<<<<<<< HEAD
-const currentUser = {
-    name: "Jona",
-    orderHistory: [
-        {
-            orderNumber: "0928586",
-            date: "Feb 15, 2024",
-            total: "$49.99",
-            items: ["4Tech Mouse", "RGB, Wireless, Black", "Qty: 1", "Status: Delivered"]
-        },
-        {
-            orderNumber: "1032471",
-            date: "Mar 03, 2024",
-            total: "$15,000.00",
-            items: ["Victus Laptop", "16GB RAM, 512GB SSD", "Qty: 1", "Status: Shipped"]
-        }
-    ]
-};
-
-=======
 // Select the container where products will be displayed
 const productContainer = document.querySelector(".product-grid");
->>>>>>> ac144c0f2ff19c843760e92c1aa679f0e55af9ba
 
 // Only run this section if we are on the products page
 if (productContainer) {
@@ -139,24 +105,10 @@ document.body.addEventListener("click", function (event) {
         if (existingItem) {
             existingItem.quantity += 1;
         } else {
-<<<<<<< HEAD
-            cart.push(new CartItem(selectedProduct, 1));
-        }
-
-        const productCard = event.target.closest(".product-card");
-
-        if (productCard) {
-            productCard.classList.add("fade-in");
-
-            setTimeout(function() {
-                productCard.classList.remove("fade-in");
-            }, 700);
-=======
             cart.push({
                 ...selectedProduct,
                 quantity: 1
             });
->>>>>>> ac144c0f2ff19c843760e92c1aa679f0e55af9ba
         }
 
         renderCart();
@@ -182,6 +134,7 @@ function renderCart() {
     cart.forEach(function (item) {
 
         const li = document.createElement("li");
+
         const name = document.createElement("h3");
         name.textContent = item.name;
 
@@ -344,6 +297,8 @@ if (accountGreeting && accountName) {
     accountGreeting.textContent = currentUser.name + "'s Account";
     accountName.textContent = currentUser.name;
 }
+
+
 
 orderSummaries.forEach(function(summary) {
     summary.addEventListener("click", function() {

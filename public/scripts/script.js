@@ -1,7 +1,8 @@
 // ===============================
-// Task 2: Dynamic Product Rendering
+// TASK 2: Dynamic Product Rendering
 // ===============================
 
+// Product class used to structure each product's data
 class Product {
     constructor(id, name, price, image) {
         this.id = id;
@@ -11,6 +12,7 @@ class Product {
     }
 }
 
+<<<<<<< HEAD
 class CartItem {
     constructor(product, quantity) {
         this.id = product.id;
@@ -21,19 +23,23 @@ class CartItem {
     }
 }
 
+=======
+// Array of products (serves as temporary data source)
+>>>>>>> ac144c0f2ff19c843760e92c1aa679f0e55af9ba
 const products = [
     new Product(1, "Gaming Mouse", 700, "assets/mouse.jpg"),
     new Product(2, "Tablet", 10000, "assets/tablet.jpg"),
-    new Product(3, "Gaming Laptop", 15000, "assets/images/victus.png"),
-    new Product(4, "Wireless Mouse", 900, "assets/mouse.jpg"),
-    new Product(5, "Office Tablet", 8500, "assets/tablet.jpg"),
-    new Product(6, "Laptop Pro", 22000, "assets/images/victus.png"),
-    new Product(7, "RGB Mouse", 1200, "assets/mouse.jpg"),
-    new Product(8, "Student Tablet", 9500, "assets/tablet.jpg"),
-    new Product(9, "Portable Laptop", 18000, "assets/images/victus.png"),
-    new Product(10, "Gaming Tablet", 13000, "assets/tablet.jpg")
+    new Product(3, "Gaming Laptop", 15000, "assets/victus.jpg"),
+    new Product(4, "Charger", 900, "assets/charger1.jpg"),
+    new Product(5, "Nintendo", 8500, "assets/nintendo.jpg"),
+    new Product(6, "Airpods", 22000, "assets/airpod.jpg"),
+    new Product(7, "iPhone", 1200, "assets/iphone.jpg"),
+    new Product(8, "Powerbank", 9500, "assets/powerbank.jpg"),
+    new Product(9, "Bluewow", 18000, "assets/bluewow.jpg"),
+    new Product(10, "Smart Watch", 13000, "assets/smart_watch.jpg")
 ];
 
+<<<<<<< HEAD
 const currentUser = {
     name: "Jona",
     orderHistory: [
@@ -52,84 +58,88 @@ const currentUser = {
     ]
 };
 
+=======
+// Select the container where products will be displayed
+const productContainer = document.querySelector(".product-grid");
+>>>>>>> ac144c0f2ff19c843760e92c1aa679f0e55af9ba
 
-const productGrid = document.querySelector(".product-grid");
+// Only run this section if we are on the products page
+if (productContainer) {
 
+    // Loop through products and dynamically create product cards
+    products.forEach(function (product) {
 
-if (productGrid) {
+        // Create elements and structure the product card
+        const productCard = document.createElement("article");
+        productCard.classList.add("product-card");
 
-    products.forEach(function(product) {
+        const productImage = document.createElement("img");
+        productImage.src = product.image;
+        productImage.alt = product.name;
 
-        const article = document.createElement("article");
-        article.classList.add("product-card");
+        const productBody = document.createElement("div");
+        productBody.classList.add("product-body");
 
-        const img = document.createElement("img");
-        img.setAttribute("src", product.image);
-        img.setAttribute("alt", product.name);
+        const productTitle = document.createElement("h3");
+        productTitle.textContent = product.name;
 
-        const bodyDiv = document.createElement("div");
-        bodyDiv.classList.add("product-body");
+        const productPrice = document.createElement("p");
+        productPrice.classList.add("price");
+        productPrice.textContent = "$" + product.price;
 
-        const title = document.createElement("h3");
-        title.textContent = product.name;
+        const actionContainer = document.createElement("div");
+        actionContainer.classList.add("actions");
 
-        const price = document.createElement("p");
-        price.classList.add("price");
-        price.textContent = "$" + product.price;
+        // Add-to-cart button stores product id using data-id
+        const addToCartButton = document.createElement("button");
+        addToCartButton.textContent = "Add to Cart";
+        addToCartButton.setAttribute("data-id", product.id);
 
-        const actions = document.createElement("div");
-        actions.classList.add("actions");
+        actionContainer.appendChild(addToCartButton);
+        productBody.appendChild(productTitle);
+        productBody.appendChild(productPrice);
+        productBody.appendChild(actionContainer);
 
-        const viewLink = document.createElement("a");
-        viewLink.setAttribute("href", "detail.html");
-        viewLink.textContent = "View Details";
+        productCard.appendChild(productImage);
+        productCard.appendChild(productBody);
 
-        const button = document.createElement("button");
-        button.setAttribute("type", "button");
-        button.setAttribute("data-id", product.id);
-        button.textContent = "Add to Cart";
-
-        actions.appendChild(viewLink);
-        actions.appendChild(button);
-
-        bodyDiv.appendChild(title);
-        bodyDiv.appendChild(price);
-        bodyDiv.appendChild(actions);
-
-        article.appendChild(img);
-        article.appendChild(bodyDiv);
-
-        productGrid.appendChild(article);
+        productContainer.appendChild(productCard);
     });
 }
 
 
 // =======================
-// TASK 3: Event Handling & The Cart 
+// TASK 3: Event Handling & Cart Logic
 // =======================
 
+// Cart array stores selected items
 let cart = [];
 
-
-document.body.addEventListener("click", function(event) {
+/*
+Event Delegation:
+Instead of adding a click listener to every button,
+we add ONE listener to the body and detect which button was clicked.
+*/
+document.body.addEventListener("click", function (event) {
 
     if (event.target.tagName === "BUTTON" && event.target.textContent === "Add to Cart") {
 
         const productId = event.target.getAttribute("data-id");
 
-        const selectedProduct = products.find(function(product) {
+        // Find the selected product using its ID
+        const selectedProduct = products.find(function (product) {
             return product.id == productId;
         });
 
         if (!selectedProduct) return;
 
-        const existingItem = cart.find(function(item) {
-            return item.id == productId;
-        });
+        // If product already exists in cart, increase quantity
+        const existingItem = cart.find(item => item.id == productId);
 
         if (existingItem) {
             existingItem.quantity += 1;
         } else {
+<<<<<<< HEAD
             cart.push(new CartItem(selectedProduct, 1));
         }
 
@@ -141,6 +151,12 @@ document.body.addEventListener("click", function(event) {
             setTimeout(function() {
                 productCard.classList.remove("fade-in");
             }, 700);
+=======
+            cart.push({
+                ...selectedProduct,
+                quantity: 1
+            });
+>>>>>>> ac144c0f2ff19c843760e92c1aa679f0e55af9ba
         }
 
         renderCart();
@@ -148,7 +164,11 @@ document.body.addEventListener("click", function(event) {
 });
 
 
-
+/*
+renderCart():
+This function clears the current cart display and rebuilds it
+based on the cart array. This ensures UI always matches data.
+*/
 function renderCart() {
 
     const cartList = document.querySelector(".cart-list");
@@ -158,7 +178,8 @@ function renderCart() {
 
     cartList.textContent = "";
 
-    cart.forEach(function(item) {
+    // Rebuild cart items dynamically
+    cart.forEach(function (item) {
 
         const li = document.createElement("li");
         const name = document.createElement("h3");
@@ -180,7 +201,12 @@ function renderCart() {
         cartList.appendChild(li);
     });
 
-    const total = cart.reduce(function(sum, item) {
+    /*
+    reduce():
+    Used to calculate total price by summing
+    (price × quantity) of each item in cart.
+    */
+    const total = cart.reduce(function (sum, item) {
         return sum + (item.price * item.quantity);
     }, 0);
 
@@ -190,8 +216,14 @@ function renderCart() {
 }
 
 
-
-document.body.addEventListener("input", function(event) {
+/*
+Quantity Adjustment:
+When user changes quantity input:
+- Update the cart array
+- Remove item if quantity becomes 0
+- Re-render cart
+*/
+document.body.addEventListener("input", function (event) {
 
     if (event.target.type === "number") {
 

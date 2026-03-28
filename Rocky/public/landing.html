@@ -1,112 +1,379 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <title>Academic Tech Shop | Dashboard</title>
+    <link rel="stylesheet" href="styles/style.css" />
 </head>
-
 <body>
-    <header>
-        <a class="site-logo" href="landing.html">
-      <img src="assets/airpod.jpg" alt="Academic Tech Shop logo">
-      <span>Academic Tech Shop</span>
-    </a>
-        <nav>
-            <ul>
-                <li><a href="landing.html" aria-current="page">Home</a></li>
-                <li><a href="products.html">Product</a></li>
-                <li><a href="cart.html">Cart</a></li>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a class="logo-box" href="landing.html">
+                <div class="logo-img">A</div>
+                <span>Academic Tech</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="landing.html" class="active">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="cart.html" class="cart-badge">Cart</a></li>
                 <li><a href="account.html">Account</a></li>
-                <li><a href="signup.html">SignUp</a></li>
+                <li><a href="signup.html">Sign In</a></li>
             </ul>
-        </nav>
-    </header>
-    <main>
-        <section class="section1">
-            <h1>Academic Tech shop</h1>
-            <p>An online market place were users can easily browse and purchase gadgets.</p>
-            <button>Shop Now</button>
-        </section>
-        <section class="box1">
-            <h2>Featured Products</h2>
-            <div class="section2">
-                <figure>
-                    <img src="assets/iphone.jpg" alt="iPhone 15">
-                    <h3>iPhone 15</h3>
-                    <p><b>price:</b> $999.00</p>
-                </figure>
-                <figure>
-                    <img src="assets/victus.jpg" alt="HP Victus Laptop">
-                    <h3>HP Victus Laptop</h3>
-                    <p><b>price:</b> $1,199.00</p>
-                </figure>
-                <figure>
-                    <img src="assets/nintendo.jpg" alt="Nintendo Switch OLED">
-                    <h3>Nintendo Switch OLED</h3>
-                    <p><b>price:</b> $349.00</p>
-                </figure>
-                <figure>
-                    <img src="assets/tablet.jpg" alt="Android Tablet 11">
-                    <h3>Android Tablet 11</h3>
-                    <p><b>price:</b> $299.00</p>
-                </figure>
-                <figure>
-                    <img src="assets/airpod.jpg" alt="Wireless AirPods Pro">
-                    <h3>Wireless AirPods Pro</h3>
-                    <p><b>price:</b> $199.00</p>
-                </figure>
-                <figure>
-                    <img src="assets/smart_watch.jpg" alt="Smart Watch Series X">
-                    <h3>Smart Watch Series X</h3>
-                    <p><b>price:</b> $129.00</p>
-                </figure>
+            <button class="menu-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-grid"></div>
+        <div class="hero-content">
+            <h1>Academic <span>Tech Shop</span></h1>
+            <p>Your premier destination for cutting-edge gadgets and academic technology. Discover premium devices at student-friendly prices.</p>
+            <div class="btn-group">
+                <button class="btn btn-primary" onclick="window.location.href='products.html'">
+                    Shop Now
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </button>
+                <button class="btn btn-secondary" onclick="window.location.href='products.html'">View Catalog</button>
             </div>
-        </section>
-        <section class="box2">
-            <h2>Discounted Products</h2>
-            <div  class="section3">
-                <figure>
-                    <img src="assets/bluewow.jpg" alt="BlueWow Cellphone Cooler">
-                    <h3>BlueWow Cellphone Cooler</h3>
-                    <p><b>price:</b> $79.00</p>
-                    <del>$95.00</del>
-                </figure>
-                <figure>
-                    <img src="assets/mouse.jpg" alt="Gaming Mouse">
-                    <h3>Gaming Mouse</h3>
-                    <p><b>price:</b> $49.00</p>
-                    <del>$59.00</del>
-                </figure>
-                <figure>
-                    <img src="assets/laptop-stand.jpg" alt="Adjustable Laptop Stand">
-                    <h3>Adjustable Laptop Stand</h3>
-                    <p><b>price:</b> $39.00</p>
-                    <del>$49.00</del>
-                </figure>
-                <figure>
-                    <img src="assets/powerbank.jpg" alt="Power Bank 20000mAh">
-                    <h3>Power Bank 20000mAh</h3>
-                    <p><b>price:</b> $45.00</p>
-                    <del>$58.00</del>
-                </figure>
-                <figure>
-                    <img src="assets/charger.jpg" alt="65W Fast Charger">
-                    <h3>65W Fast Charger</h3>
-                    <p><b>price:</b> $25.00</p>
-                    <del>$32.00</del>
-                </figure>
-                <figure>
-                    <img src="assets/charger1.jpg" alt="Wireless Charger Pad">
-                    <h3>Wireless Charger Pad</h3>
-                    <p><b>price:</b> $29.00</p>
-                    <del>$38.00</del>
-                </figure>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="section-wrapper">
+        <div class="section-header">
+            <h2 class="section-title">Featured Products</h2>
+            <a href="products.html" class="view-all">
+                View All Products
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+        </div>
+        
+        <div class="product-grid">
+            <!-- Product 1 -->
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop" alt="HP Victus Laptop">
+                    <div class="product-overlay">
+                        <div class="quick-actions">
+                            <button class="icon-btn" aria-label="Quick view">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M2 12s4-8 10-8 10 8 10 8-4 8-10 8-10-8-10-8Z"/></svg>
+                            </button>
+                            <button class="icon-btn" aria-label="Add to wishlist">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Laptop</div>
+                    <h3 class="product-name">HP Victus Gaming Laptop</h3>
+                    <div class="product-footer">
+                        <div class="price">
+                            <span class="current-price">3.00</span>
+                        </div>
+                        <button class="add-to-cart">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Product 2 -->
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&h=300&fit=crop" alt="Gaming Mouse">
+                    <div class="product-overlay">
+                        <div class="quick-actions">
+                            <button class="icon-btn" aria-label="Quick view">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M2 12s4-8 10-8 10 8 10 8-4 8-10 8-10-8-10-8Z"/></svg>
+                            </button>
+                            <button class="icon-btn" aria-label="Add to wishlist">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Accessories</div>
+                    <h3 class="product-name">Pro Gaming Mouse RGB</h3>
+                    <div class="product-footer">
+                        <div class="price">
+                            <span class="current-price">3.00</span>
+                        </div>
+                        <button class="add-to-cart">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Product 3 -->
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop" alt="HP Victus">
+                    <div class="product-overlay">
+                        <div class="quick-actions">
+                            <button class="icon-btn" aria-label="Quick view">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M2 12s4-8 10-8 10 8 10 8-4 8-10 8-10-8-10-8Z"/></svg>
+                            </button>
+                            <button class="icon-btn" aria-label="Add to wishlist">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Laptop</div>
+                    <h3 class="product-name">HP Victus 15.6" FHD</h3>
+                    <div class="product-footer">
+                        <div class="price">
+                            <span class="current-price">3.00</span>
+                        </div>
+                        <button class="add-to-cart">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Product 4 -->
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=300&fit=crop" alt="Mechanical Keyboard">
+                    <div class="product-overlay">
+                        <div class="quick-actions">
+                            <button class="icon-btn" aria-label="Quick view">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M2 12s4-8 10-8 10 8 10 8-4 8-10 8-10-8-10-8Z"/></svg>
+                            </button>
+                            <button class="icon-btn" aria-label="Add to wishlist">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Accessories</div>
+                    <h3 class="product-name">Mechanical Keyboard Pro</h3>
+                    <div class="product-footer">
+                        <div class="price">
+                            <span class="current-price">3.00</span>
+                        </div>
+                        <button class="add-to-cart">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Product 5 -->
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop" alt="HP Victus">
+                    <div class="product-overlay">
+                        <div class="quick-actions">
+                            <button class="icon-btn" aria-label="Quick view">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M2 12s4-8 10-8 10 8 10 8-4 8-10 8-10-8-10-8Z"/></svg>
+                            </button>
+                            <button class="icon-btn" aria-label="Add to wishlist">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Laptop</div>
+                    <h3 class="product-name">HP Victus Special Edition</h3>
+                    <div class="product-footer">
+                        <div class="price">
+                            <span class="current-price">3.00</span>
+                        </div>
+                        <button class="add-to-cart">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Discounted Products -->
+    <section class="section-wrapper">
+        <div class="discount-section">
+            <div class="section-header">
+                <h2 class="section-title">Special Offers</h2>
+                <a href="products.html" class="view-all" style="color: var(--accent)">
+                    View All Deals
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
             </div>
-        </section>
-    </main>
+            
+            <div class="product-grid">
+                <!-- Discounted Product 1 -->
+                <article class="product-card">
+                    <span class="product-badge discount-badge">-20%</span>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=400&h=300&fit=crop" alt="Tablet">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Tablet</div>
+                        <h3 class="product-name">iPad Air M1</h3>
+                        <div class="product-footer">
+                            <div class="price">
+                                <span class="current-price">5.00</span>
+                                <span class="original-price">$6.00</span>
+                            </div>
+                            <button class="add-to-cart">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Discounted Product 2 -->
+                <article class="product-card">
+                    <span class="product-badge discount-badge">-43%</span>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=400&h=300&fit=crop" alt="Tablet">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Tablet</div>
+                        <h3 class="product-name">Samsung Galaxy Tab</h3>
+                        <div class="product-footer">
+                            <div class="price">
+                                <span class="current-price">4.00</span>
+                                <span class="original-price">$7.00</span>
+                            </div>
+                            <button class="add-to-cart">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Discounted Product 3 -->
+                <article class="product-card">
+                    <span class="product-badge discount-badge">-20%</span>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=400&h=300&fit=crop" alt="Tablet">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Tablet</div>
+                        <h3 class="product-name">Microsoft Surface</h3>
+                        <div class="product-footer">
+                            <div class="price">
+                                <span class="current-price">5.00</span>
+                                <span class="original-price">$6.00</span>
+                            </div>
+                            <button class="add-to-cart">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Discounted Product 4 -->
+                <article class="product-card">
+                    <span class="product-badge discount-badge">-43%</span>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=400&h=300&fit=crop" alt="Tablet">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Tablet</div>
+                        <h3 class="product-name">Lenovo Tab P11</h3>
+                        <div class="product-footer">
+                            <div class="price">
+                                <span class="current-price">4.00</span>
+                                <span class="original-price">$7.00</span>
+                            </div>
+                            <button class="add-to-cart">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Discounted Product 5 -->
+                <article class="product-card">
+                    <span class="product-badge discount-badge">-43%</span>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=400&h=300&fit=crop" alt="Tablet">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Tablet</div>
+                        <h3 class="product-name">Amazon Fire HD</h3>
+                        <div class="product-footer">
+                            <div class="price">
+                                <span class="current-price">4.00</span>
+                                <span class="original-price">$7.00</span>
+                            </div>
+                            <button class="add-to-cart">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div>
+                <div class="footer-brand">Academic Tech</div>
+                <p>Your trusted partner for academic technology solutions. Quality gadgets for students and professionals.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="#">All Products</a></li>
+                    <li><a href="#">Laptops</a></li>
+                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#">Deals</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                    <li><a href="#">Returns</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Account</h4>
+                <ul>
+                    <li><a href="#">My Account</a></li>
+                    <li><a href="#">Order History</a></li>
+                    <li><a href="#">Wishlist</a></li>
+                    <li><a href="#">Settings</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Academic Tech Shop. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="scripts/script.js"></script>
 </body>
 </html>
-

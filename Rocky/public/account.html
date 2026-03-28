@@ -13,8 +13,8 @@
 
   <header class="topbar">
     <div>
-      <a class="site-logo logo" href="landing.html"><img src="assets/airpod.jpg" alt="Academic Tech Shop logo"><span>Academic Tech Shop</span></a>
-      <p class="muted">Welcome, <strong>Guest</strong></p>
+      <a class="site-logo logo" href="landing.html"><img src="assets/airpod.jpg" alt="Academic Tech Shop logo"><span id="accountGreeting">Academic Tech Shop</span></a>
+      <p class="muted">Welcome, <strong id="accountName">Guest</strong></p>
     </div>
 
     <nav class="topnav">
@@ -36,15 +36,17 @@
         <li>
           <strong>Order no.0928586</strong>  4Tech Mouse
 
-          <details>
+          <details data-order-index="0">
             <summary>Click to view the details</summary>
-            <dl>
-              <dd>Date: Feb 15, 2024</dd>
-              <dd>RGB, Wireless, Black</dd>
-              <dd>Price: $49.99</dd>
-              <dd>Qty: 1</dd>
-              <dd><strong>Status: Delivered</strong></dd>
-            </dl>
+            <div class="order-details"></div>
+          </details>
+        </li>
+        <li>
+          <strong>Order no.1032471</strong> HP Victus Laptop
+
+          <details data-order-index="1">
+            <summary>Click to view the details</summary>
+            <div class="order-details"></div>
           </details>
         </li>
       </ul>
@@ -60,6 +62,7 @@
       <p>Demo page. view wishlist items.</p>
     </section>
   </main>
+  <script src="scripts/script.js"></script>
 </body>
 
 </html>

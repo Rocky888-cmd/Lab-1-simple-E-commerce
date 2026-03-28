@@ -24,10 +24,15 @@ class CartItem {
 }
 
 class Order {
-    constructor(date, total, items) {
+    constructor(id, date, subtotal, shipping, discount, total, items, status) {
+        this.id = id;
         this.date = date;
+        this.subtotal = subtotal;
+        this.shipping = shipping;
+        this.discount = discount;
         this.total = total;
         this.items = items;
+        this.status = status;
     }
 }
 
@@ -51,25 +56,118 @@ const products = [
     new Product(10, "Smart Watch", 13000, "assets/smart_watch.jpg", "detail.html")
 ];
 
-const currentUser = new User("Jona", [
-    new Order("February 15, 2024", "$49.99", [
-        "4Tech Mouse",
-        "RGB, Wireless, Black",
-        "Qty: 1",
-        "Status: Delivered"
-    ]),
-    new Order("March 3, 2024", "$15,000.00", [
-        "Victus Laptop",
-        "16GB RAM, 512GB SSD",
-        "Qty: 1",
-        "Status: Shipped"
-    ])
-]);
-
 const CART_STORAGE_KEY = "lab6_cart";
+const ORDER_HISTORY_STORAGE_KEY = "lab6_order_history";
+const LAST_ORDER_STORAGE_KEY = "lab6_last_order";
+const SHIPPING_FEE_PER_ITEM = 4;
+const DISCOUNT_RATE = 0.10;
+
+function getDefaultOrderHistory() {
+    return [
+        new Order(
+            "0928586",
+            "February 15, 2024",
+            49.99,
+            4,
+            5,
+            48.99,
+            [
+                { name: "4Tech Mouse", quantity: 1, price: 49.99, subtotal: 49.99 }
+            ],
+            "Delivered"
+        ),
+        new Order(
+            "1032471",
+            "March 3, 2024",
+            15000,
+            4,
+            1500,
+            13504,
+            [
+                { name: "Victus Laptop", quantity: 1, price: 15000, subtotal: 15000 }
+            ],
+            "Shipped"
+        )
+    ];
+}
+
+function normalizeOrder(order) {
+    return {
+        id: order.id || String(Date.now()),
+        date: order.date || new Date().toLocaleDateString(),
+        subtotal: Number(order.subtotal || 0),
+        shipping: Number(order.shipping || 0),
+        discount: Number(order.discount || 0),
+        total: Number(order.total || 0),
+        status: order.status || "Processing",
+        items: Array.isArray(order.items) ? order.items : []
+    };
+}
+
+function loadOrderHistory() {
+    const savedOrders = localStorage.getItem(ORDER_HISTORY_STORAGE_KEY);
+
+    if (!savedOrders) {
+        const defaultOrders = getDefaultOrderHistory().map(normalizeOrder);
+        localStorage.setItem(ORDER_HISTORY_STORAGE_KEY, JSON.stringify(defaultOrders));
+        return defaultOrders;
+    }
+
+    try {
+        return JSON.parse(savedOrders).map(normalizeOrder);
+    } catch (error) {
+        const fallbackOrders = getDefaultOrderHistory().map(normalizeOrder);
+        localStorage.setItem(ORDER_HISTORY_STORAGE_KEY, JSON.stringify(fallbackOrders));
+        return fallbackOrders;
+    }
+}
+
+function saveOrderHistory(orderHistory) {
+    localStorage.setItem(ORDER_HISTORY_STORAGE_KEY, JSON.stringify(orderHistory));
+}
+
+function saveLastOrder(order) {
+    localStorage.setItem(LAST_ORDER_STORAGE_KEY, JSON.stringify(order));
+}
+
+function loadLastOrder() {
+    const savedOrder = localStorage.getItem(LAST_ORDER_STORAGE_KEY);
+
+    if (!savedOrder) {
+        return null;
+    }
+
+    try {
+        return normalizeOrder(JSON.parse(savedOrder));
+    } catch (error) {
+        return null;
+    }
+}
+
+const currentUser = new User("Jona", loadOrderHistory());
 
 function saveCart() {
     localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+}
+
+function calculateCartSummary(cartItems) {
+    const subtotal = cartItems.reduce(function(sum, item) {
+        return sum + (item.price * item.quantity);
+    }, 0);
+    const totalQuantity = cartItems.reduce(function(sum, item) {
+        return sum + item.quantity;
+    }, 0);
+    const shipping = totalQuantity * SHIPPING_FEE_PER_ITEM;
+    const discount = subtotal * DISCOUNT_RATE;
+    const total = subtotal + shipping - discount;
+
+    return {
+        subtotal: subtotal,
+        shipping: shipping,
+        discount: discount,
+        total: total,
+        totalQuantity: totalQuantity
+    };
 }
 
 function getCartItemCount() {
@@ -149,7 +247,10 @@ function loadCart() {
 }
 
 function formatPrice(value) {
-    return "$" + value.toLocaleString();
+    return "$" + Number(value).toLocaleString(undefined, {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
 }
 
 function renderLandingProducts() {
@@ -377,6 +478,7 @@ function renderCart() {
     updateCartLinks();
 
     if (!cartList) {
+        renderCheckoutSummary();
         return;
     }
 
@@ -384,7 +486,7 @@ function renderCart() {
 
      if (cart.length === 0) {
         if (totalDisplay) {
-            totalDisplay.textContent = "$0";
+            totalDisplay.textContent = formatPrice(0);
         }
 
         if (cartEmptyContainer) {
@@ -395,6 +497,7 @@ function renderCart() {
             cartTotalContainer.style.display = "none";
         }
 
+        renderCheckoutSummary();
         return;
     }
 
@@ -426,7 +529,7 @@ function renderCart() {
         name.appendChild(document.createTextNode(item.name));
 
         const price = document.createElement("p");
-        price.appendChild(document.createTextNode("$" + item.price));
+        price.appendChild(document.createTextNode(formatPrice(item.price)));
 
         const itemControls = document.createElement("div");
         itemControls.classList.add("cart-item-controls");
@@ -457,7 +560,7 @@ function renderCart() {
 
         const subtotal = document.createElement("p");
         subtotal.classList.add("cart-item-subtotal");
-        subtotal.appendChild(document.createTextNode("" + (item.price * item.quantity)));
+        subtotal.appendChild(document.createTextNode(formatPrice(item.price * item.quantity)));
 
         itemText.appendChild(name);
         itemText.appendChild(price);
@@ -477,12 +580,74 @@ function renderCart() {
         cartList.appendChild(listItem);
     });
 
-    const total = cart.reduce(function(sum, item) {
-        return sum + (item.price * item.quantity);
-    }, 0);
+    const summary = calculateCartSummary(cart);
 
     if (totalDisplay) {
-        totalDisplay.textContent = "" + total;
+        totalDisplay.textContent = formatPrice(summary.subtotal);
+    }
+
+    renderCheckoutSummary();
+}
+
+function renderCheckoutSummary() {
+    const summaryItemsList = document.getElementById("checkout-summary-items");
+    const subtotalElement = document.getElementById("checkout-subtotal");
+    const shippingElement = document.getElementById("checkout-shipping");
+    const discountElement = document.getElementById("checkout-discount");
+    const totalElement = document.getElementById("checkout-total");
+    const summaryNote = document.getElementById("checkout-summary-note");
+    const placeOrderButton = document.querySelector(".place-order");
+
+    if (!subtotalElement || !shippingElement || !discountElement || !totalElement) {
+        return;
+    }
+
+    const summary = calculateCartSummary(cart);
+
+    if (summaryItemsList) {
+        summaryItemsList.textContent = "";
+
+        cart.forEach(function(item) {
+            const listItem = document.createElement("li");
+            listItem.classList.add("summary-item");
+
+            const itemInfo = document.createElement("div");
+            const itemName = document.createElement("p");
+            const itemMeta = document.createElement("p");
+            const itemTotal = document.createElement("p");
+            const itemTotalStrong = document.createElement("strong");
+
+            itemName.innerHTML = "<strong>" + item.name + "</strong>";
+            itemMeta.textContent = "Price: " + formatPrice(item.price) + " | Qty: " + item.quantity;
+            itemTotalStrong.textContent = formatPrice(item.price * item.quantity);
+            itemTotal.appendChild(itemTotalStrong);
+
+            itemInfo.appendChild(itemName);
+            itemInfo.appendChild(itemMeta);
+            listItem.appendChild(itemInfo);
+            listItem.appendChild(itemTotal);
+            summaryItemsList.appendChild(listItem);
+        });
+    }
+
+    subtotalElement.textContent = formatPrice(summary.subtotal);
+    shippingElement.textContent = formatPrice(summary.shipping);
+    discountElement.textContent = "- " + formatPrice(summary.discount);
+    totalElement.textContent = formatPrice(summary.total);
+
+    if (summaryNote) {
+        if (cart.length === 0) {
+            summaryNote.textContent = "Your cart is empty. Add products before placing an order.";
+        } else {
+            summaryNote.textContent =
+                "Shipping is " +
+                formatPrice(SHIPPING_FEE_PER_ITEM) +
+                " for each item quantity, with a 10% discount on subtotal.";
+        }
+    }
+
+    if (placeOrderButton) {
+        placeOrderButton.disabled = cart.length === 0;
     }
 }
 
@@ -628,8 +793,57 @@ if (paymentForm) {
             }
         }
 
+        if (cart.length === 0) {
+            isValid = false;
+
+            const summaryNote = document.getElementById("checkout-summary-note");
+
+            if (summaryNote) {
+                summaryNote.textContent = "Your cart is empty. Add products before placing an order.";
+            }
+        }
+
         if (isValid) {
-            console.log("Form submitted successfully.");
+            const summary = calculateCartSummary(cart);
+            const orderItems = cart.map(function(item) {
+                return {
+                    id: item.id,
+                    name: item.name,
+                    quantity: item.quantity,
+                    price: item.price,
+                    subtotal: item.price * item.quantity
+                };
+            });
+            const newOrder = normalizeOrder({
+                id: "ATS-" + Date.now(),
+                date: new Date().toLocaleString(undefined, {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                    hour: "numeric",
+                    minute: "2-digit"
+                }),
+                subtotal: summary.subtotal,
+                shipping: summary.shipping,
+                discount: summary.discount,
+                total: summary.total,
+                items: orderItems,
+                status: "Processing",
+                shippingAddress: {
+                    fullName: fullNameInput.value.trim(),
+                    street: streetInput.value.trim(),
+                    zip: zipInput.value.trim()
+                },
+                paymentMethod: paymentMethod ? paymentMethod.value : "card"
+            });
+            const updatedOrderHistory = [newOrder].concat(loadOrderHistory());
+
+            saveOrderHistory(updatedOrderHistory);
+            saveLastOrder(newOrder);
+            currentUser.orderHistory = updatedOrderHistory;
+            cart = [];
+            saveCart();
+            renderCart();
             window.location.href = "thankyou.html";
         }
     });
@@ -641,36 +855,89 @@ if (paymentForm) {
 
 const accountGreeting = document.querySelector("#accountGreeting");
 const accountName = document.querySelector("#accountName");
-const orderSummaries = document.querySelectorAll(".order-list summary");
+const orderHistoryList = document.querySelector("#order-history-list");
 
 if (accountGreeting && accountName) {
     accountGreeting.textContent = currentUser.name + "'s Account";
     accountName.textContent = currentUser.name;
 }
 
-orderSummaries.forEach(function(summary) {
-    summary.addEventListener("click", function() {
-        const details = summary.parentElement;
-        const detailsContent = details.querySelector(".order-details");
-        const orderIndex = details.getAttribute("data-order-index");
-        const order = currentUser.orderHistory[orderIndex];
+function renderOrderHistory() {
+    if (!orderHistoryList) {
+        return;
+    }
 
-        if (!order || detailsContent.getAttribute("data-loaded") === "true") {
-            return;
-        }
+    const orderHistory = loadOrderHistory();
 
-        let itemsMarkup = "";
+    currentUser.orderHistory = orderHistory;
+    orderHistoryList.textContent = "";
 
-        order.items.forEach(function(item) {
-            itemsMarkup += "<li>" + item + "</li>";
-        });
+    if (orderHistory.length === 0) {
+        const emptyItem = document.createElement("li");
+        emptyItem.textContent = "No orders yet.";
+        orderHistoryList.appendChild(emptyItem);
+        return;
+    }
+
+    orderHistory.forEach(function(order) {
+        const listItem = document.createElement("li");
+        const orderTitle = document.createElement("strong");
+        const details = document.createElement("details");
+        const summary = document.createElement("summary");
+        const detailsContent = document.createElement("div");
+        const itemsList = document.createElement("ul");
+
+        orderTitle.textContent = "Order no." + order.id;
+        summary.textContent = "Click to view the details";
+        detailsContent.classList.add("order-details");
 
         detailsContent.innerHTML =
             "<p>Date: " + order.date + "</p>" +
-            "<p>Total: " + order.total + "</p>" +
-            "<p>Items:</p>" +
-            "<ul>" + itemsMarkup + "</ul>";
+            "<p>Status: " + order.status + "</p>" +
+            "<p>Subtotal: " + formatPrice(order.subtotal) + "</p>" +
+            "<p>Shipping: " + formatPrice(order.shipping) + "</p>" +
+            "<p>Discount: - " + formatPrice(order.discount) + "</p>" +
+            "<p>Total: " + formatPrice(order.total) + "</p>" +
+            "<p>Items:</p>";
 
-        detailsContent.setAttribute("data-loaded", "true");
+        order.items.forEach(function(item) {
+            const itemRow = document.createElement("li");
+
+            if (typeof item === "string") {
+                itemRow.textContent = item;
+            } else {
+                itemRow.textContent =
+                    item.name +
+                    " | Qty: " +
+                    item.quantity +
+                    " | Price: " +
+                    formatPrice(item.price) +
+                    " | Subtotal: " +
+                    formatPrice(item.subtotal);
+            }
+
+            itemsList.appendChild(itemRow);
+        });
+
+        detailsContent.appendChild(itemsList);
+        details.appendChild(summary);
+        details.appendChild(detailsContent);
+
+        listItem.appendChild(orderTitle);
+        listItem.appendChild(document.createTextNode(" - " + order.status));
+        listItem.appendChild(details);
+        orderHistoryList.appendChild(listItem);
     });
-});
+}
+
+renderOrderHistory();
+
+const thankyouOrderIdValue = document.querySelector("#thankyou-order-id-value");
+
+if (thankyouOrderIdValue) {
+    const latestOrder = loadLastOrder();
+
+    if (latestOrder) {
+        thankyouOrderIdValue.textContent = latestOrder.id;
+    }
+}

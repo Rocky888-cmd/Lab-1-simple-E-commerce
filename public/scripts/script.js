@@ -1,6 +1,19 @@
+//============================================
+//Task 1: The Script Foundation & Data Structure
+// create this script.js file
+//============================================
 // ===============================
-// Task 1: Script Foundation & Data Structure
 // ===============================
+
+/*
+Task 1 logic:
+- This section builds the foundation of the whole script by defining the main classes:
+  Product, CartItem, Order, and User.
+- It also prepares shared constants and localStorage helpers so cart data, order history,
+  and the latest placed order can be saved and reused across different pages.
+- The pricing helper functions are placed here too, because subtotal, shipping, discount,
+  and total are needed in both cart and checkout behavior.
+*/
 
 class Product {
     constructor(id, name, price, image, detailPage) {
@@ -367,6 +380,15 @@ initializeLandingHeroSlider();
 // Task 2: Dynamic Product Rendering
 // ===============================
 
+/*
+Task 2 logic:
+- This section creates the product cards dynamically from the JavaScript products array
+  instead of manually writing every product in HTML.
+- Each card shows the product image, name, price, and Add to Cart button.
+- The card is also interactive, so clicking the product area or pressing Enter sends the
+  user to the related detail page.
+*/
+
 const productContainer = document.querySelector(".product-grid");
 
 if (productContainer) {
@@ -427,6 +449,16 @@ if (productContainer) {
 // =======================
 // Task 3: Event Handling & The Cart
 // =======================
+
+/*
+Task 3 logic:
+- This section controls cart interactions such as adding items, increasing quantity,
+  decreasing quantity, removing items, and redrawing the cart display.
+- It keeps the cart synchronized with localStorage so the cart remains available after
+  refreshing the page or moving to another page.
+- It also updates related user interface parts like the cart count in navigation,
+  the cart total, and the checkout summary preview.
+*/
 
 let cart = loadCart();
 
@@ -716,6 +748,16 @@ updateCartLinks();
 // Task 4: Form Validation & Submission (checkout.html)
 // =======================
 
+/*
+Task 4 logic:
+- This section validates the checkout form before an order can be placed.
+- It checks the shipping inputs first, then validates card details only when the selected
+  payment method is credit card.
+- If everything is valid and the cart is not empty, it creates an order object from the
+  cart data, saves it into order history, stores the latest order ID for the thank-you
+  page, clears the cart, and redirects the user to the confirmation page.
+*/
+
 const paymentForm = document.querySelector("#paymentForm");
 
 if (paymentForm) {
@@ -852,6 +894,16 @@ if (paymentForm) {
 // =======================
 // Task 5: User Account & Order History (account.html)
 // =======================
+
+/*
+Task 5 logic:
+- This section updates the account page with the current user's name and loads the saved
+  orders from localStorage.
+- It renders each order into the Order History section and shows extra details such as
+  date, status, subtotal, shipping, discount, total, and purchased items.
+- It also updates the thank-you page by showing the most recent saved order ID after a
+  successful checkout.
+*/
 
 const accountGreeting = document.querySelector("#accountGreeting");
 const accountName = document.querySelector("#accountName");
